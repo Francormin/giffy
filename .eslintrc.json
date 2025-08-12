@@ -1,0 +1,32 @@
+{
+  "extends": ["react-app", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "rules": {
+    /* Reglas de JSX para controlar multilínea y props */
+    "react/jsx-first-prop-new-line": ["error", "multiline"], // Primera prop en nueva línea si multiline
+    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }], // Una prop por línea si multiline
+    "react/jsx-indent-props": ["error", 2], // Indent props 2 espacios
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"], // Bracket de cierre alineado con prop
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "export"
+      }
+    ],
+
+    /* Otras reglas que podés querer */
+    "react/prop-types": "off", // si usás TS o JSDoc
+    "react/react-in-jsx-scope": "off" // React 17+ no requiere import React
+  }
+}
