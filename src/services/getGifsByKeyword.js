@@ -1,5 +1,5 @@
-const getGifs = ({ keyword = "morty" } = {}) => {
-  const params = `api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
+const getGifsByKeyword = ({ keyword = "morty" } = {}) => {
+  const params = `search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
   const apiUrl = `${process.env.REACT_APP_GIPHY_BASE_URL}${params}`;
 
   return fetch(apiUrl)
@@ -17,7 +17,8 @@ const getGifs = ({ keyword = "morty" } = {}) => {
 
         return gifs;
       }
-    });
+    })
+    .catch(error => console.error("Error fetching gifs:", error));
 };
 
-export default getGifs;
+export default getGifsByKeyword;
