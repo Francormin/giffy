@@ -1,10 +1,11 @@
+import "./Gif.css";
+
 const Gif = ({ id, title, url }) => {
   return (
-    <div>
+    <a href={`/gif/${id}`} className="Gif">
       <h4>{title}</h4>
-      <p>{id}</p>
       <img src={url} alt={title} />
-    </div>
+    </a>
   );
 };
 
