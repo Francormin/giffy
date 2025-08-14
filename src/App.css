@@ -1,24 +1,66 @@
-.App {
-  text-align: center;
-}
-
 .App-content {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 16px;
 }
 
-button {
-  font-size: 30px;
+.App-logo-link {
+  display: inline-block; /* Hace que el <a> se ajuste solo al tamaño del contenido */
+  margin: 0 auto; /* Intenta centrar horizontalmente (pero solo funciona si el padre es block y tiene text-align o flex) */
+  line-height: 0; /* Elimina espacio extra que los elementos inline-block suelen dejar por texto */
+  text-align: center;
+}
+
+.App-logo {
+  margin: 0 auto; /* Centra horizontalmente si el elemento es block */
+  width: 250px; /* Tamaño base fijo */
+  max-width: 80%; /* Se reduce proporcionalmente en pantallas chicas */
+  height: auto; /* Mantiene la proporción original */
+  cursor: pointer; /* Muestra cursor de mano */
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.App-logo.pulse {
+  animation: logoPulse 2s infinite ease-in-out;
+}
+
+.App-logo-link:hover .App-logo.pulse {
+  filter: drop-shadow(0 8px 16px rgba(0, 91, 176, 0.35))
+          saturate(1.1)
+          brightness(1.05);
+}
+
+.Home-container {
+  padding: 25px;
+}
+
+.Home-container h3 {
+  color: #00ceaf;
 }
 
 a {
   color: #09f;
-  font-size: 32px;
+  font-size: 26px;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style-type: none;
 }
