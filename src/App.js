@@ -1,23 +1,22 @@
 import { Link, Route, Switch } from "wouter";
+import Home from "./pages/Home";
+import SearchResults from "./pages/SearchResults";
+import Detail from "./pages/Detail";
+import ResourceNotFound from "./components/ResourceNotFound";
 import "./App.css";
-import ListOfGifs from "./components/ListOfGifs";
-import GifDetails from "./components/GifDetails";
 
 const App = () => {
   return (
     <div className="App">
       <section className="App-content">
+        <Link to="/" className="App-logo-link">
+          <img className="App-logo pulse" src="/giffy_logo.png" alt="giffy logo" />
+        </Link>
         <Switch>
-          <Route path="/">
-            <h1>GIFFY</h1>
-            <Link to="/gifs/argentina">GIFs of Argentina</Link>
-            <Link to="/gifs/brasil">GIFs of Brasil</Link>
-            <Link to="/gifs/colombia">GIFs of Colombia</Link>
-          </Route>
-
-          <Route path="/gifs/:keyword" component={ListOfGifs} />
-          <Route path="/gif/:id" component={GifDetails} />
-          <Route>¯\_(ツ)_/¯Page Not Found¯\_(ツ)_/¯</Route>
+          <Route path="/" component={Home} />
+          <Route path="/search/:keyword" component={SearchResults} />
+          <Route path="/gif/:id" component={Detail} />
+          <Route component={ResourceNotFound} />
         </Switch>
       </section>
     </div>
