@@ -1,0 +1,10 @@
+.ResourceNotFound-container {
+  margin: 0 auto;
+}
+
+.ResourceNotFound-container img {
+  width: 320px;
+  height: 420px;
+  background-color: #eee;
+  border-radius: 10%;
+}
