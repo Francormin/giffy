@@ -2,7 +2,7 @@ import { Link, Route, Switch } from "wouter";
 import Home from "./pages/Home";
 import SearchResults from "./pages/SearchResults";
 import Detail from "./pages/Detail";
-import ResourceNotFound from "./components/ResourceNotFound";
+import NotFound from "./pages/NotFound";
 import "./App.css";
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/" component={Home} />
           <Route path="/search/:keyword" component={SearchResults} />
           <Route path="/gif/:id" component={Detail} />
-          <Route component={ResourceNotFound} />
+          <Route component={NotFound} />
         </Switch>
       </section>
     </div>
