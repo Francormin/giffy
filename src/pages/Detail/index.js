@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
-import getGifById from "../../services/getGifById";
 import GifDetails from "../../components/GifDetails";
-import Spinner from "../../components/Spinner";
+import useGlobalGifs from "../../hooks/useGlobalGifs";
 
 const Detail = ({ params }) => {
   const { id } = params;
-  const [gif, setGif] = useState({
-    loading: false,
-    result: {}
-  });
+  const { loading, results } = useGlobalGifs();
 
-  useEffect(() => {
-    // setLoading(true);
-    setGif(actualGif => ({
-      loading: true,
-      result: actualGif.result
-    }));
+  const gif = results?.find(singleGif => singleGif.id === id);
 
-    getGifById({ id }).then(gif => {
-      // setGifs(gifs);
-      // setLoading(false);
-      setGif({
-        loading: false,
-        result: gif
-      });
-    });
-  }, [id]);
-
-  return gif.loading
-    ? <Spinner />
-    : <GifDetails gif={gif.result} />;
+  return <GifDetails gif={gif} loading={loading} />;
 };
 
 export default Detail;
