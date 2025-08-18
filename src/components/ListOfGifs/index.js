@@ -6,11 +6,11 @@ import "./styles.css";
 const ListOfGifs = ({ gifs, loading }) => {
   return loading ? (
     <Spinner />
-  ) : gifs.length === 0 ? (
+  ) : gifs?.length === 0 ? (
     <ResourceNotFound />
   ) : (
     <div className="ListOfGifs">
-      {gifs.map(({ id, title, url }) =>
+      {gifs?.map(({ id, title, url }) =>
         <Gif
           key={id}
           id={id}
