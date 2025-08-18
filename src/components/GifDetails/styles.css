@@ -1,5 +1,9 @@
 .GifDetails-container {
-  padding: 15px;
+  padding: 0 20px;
+}
+
+.GifDetails-card {
+  padding: 10px;
   max-width: 500px; /* Controla el ancho máximo */
   margin: 20px auto; /* Centrado horizontal */
   border-radius: 8px;
@@ -10,7 +14,7 @@
   line-height: 1.5;
 }
 
-.GifDetails-container img {
+.GifDetails-card img {
   width: 100%; /* Ajusta al ancho del contenedor */
   height: auto; /* Mantiene proporción */
   border-radius: 8px;
@@ -19,18 +23,18 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.GifDetails-container img:hover {
+.GifDetails-card img:hover {
   transform: scale(1.03); /* Zoom suave al hacer hover */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.GifDetails-container h3 {
+.GifDetails-card h3 {
   margin: 0 0 10px 0;
   font-size: 1.2rem;
   color: #282c34;
 }
 
-.GifDetails-container span {
+.GifDetails-card span {
   display: block; /* Mantiene cada <span> en su línea */
   margin-bottom: 6px;
   font-size: 0.95rem;
