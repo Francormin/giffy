@@ -9,10 +9,18 @@ const getGifsByKeyword = ({ keyword } = {}) => {
 
       if (Array.isArray(data)) {
         const gifs = data.map(gif => {
-          const { id, title, images } = gif;
+          const { id, type, title, alt_text, rating, username, images } = gif;
           const { url } = images.original;
 
-          return { id, title, url };
+          return {
+            id,
+            type,
+            title,
+            description: alt_text,
+            rating,
+            username,
+            url
+          };
         });
 
         return gifs;
