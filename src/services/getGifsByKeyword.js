@@ -1,31 +1,12 @@
-const getGifsByKeyword = ({ keyword } = {}) => {
-  const params = `search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=12&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
+import { fromApiResponseToGifs } from "utils";
+
+const getGifsByKeyword = ({ limit = 25, keyword } = {}) => {
+  const params = `/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=${limit}`;
   const apiUrl = `${process.env.REACT_APP_GIPHY_BASE_URL}${params}`;
 
   return fetch(apiUrl)
     .then(res => res.json())
-    .then(response => {
-      const { data = [] } = response;
-
-      if (Array.isArray(data)) {
-        const gifs = data.map(gif => {
-          const { id, type, title, alt_text, rating, username, images } = gif;
-          const { url } = images.original;
-
-          return {
-            id,
-            type,
-            title,
-            description: alt_text,
-            rating,
-            username,
-            url
-          };
-        });
-
-        return gifs;
-      }
-    })
+    .then(fromApiResponseToGifs)
     .catch(error => console.error("Error fetching gifs:", error));
 };
 
