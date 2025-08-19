@@ -1,10 +1,11 @@
 import { Link, Route, Switch } from "wouter";
-import Home from "./pages/Home";
-import SearchResults from "./pages/SearchResults";
-import Detail from "./pages/Detail";
-import NotFound from "./pages/NotFound";
-import { GifsContextProvider } from "./context/GifsContext";
-import "./App.css";
+import Home from "pages/Home";
+import SearchResults from "pages/SearchResults";
+import Detail from "pages/Detail";
+import NotFound from "pages/NotFound";
+import { GifsContextProvider } from "context/GifsContext";
+import "App.css";
+import "theme.css";
 
 const App = () => {
   return (
