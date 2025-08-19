@@ -3,40 +3,38 @@
 }
 
 .GifDetails-card {
-  padding: 10px;
   max-width: 500px; /* Controla el ancho máximo */
   margin: 20px auto; /* Centrado horizontal */
   border-radius: 8px;
-  background-color: #2963eb;
+  background-color: var(--secondary-background-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: #fff;
+  color: var(--secondary-font-color);
   text-align: left; /* Mantiene la lectura natural */
   line-height: 1.5;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
 .GifDetails-card img {
   width: 100%; /* Ajusta al ancho del contenedor */
   height: auto; /* Mantiene proporción */
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   margin-bottom: 15px;
   object-fit: cover; /* Evita deformaciones en la imagen */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .GifDetails-card img:hover {
-  transform: scale(1.03); /* Zoom suave al hacer hover */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .GifDetails-card h3 {
   margin: 0 0 10px 0;
   font-size: 1.2rem;
-  color: #282c34;
 }
 
 .GifDetails-card span {
   display: block; /* Mantiene cada <span> en su línea */
   margin-bottom: 6px;
   font-size: 0.95rem;
-  color: #282c34;
 }
