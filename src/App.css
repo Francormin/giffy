@@ -1,10 +1,9 @@
 .App-content {
-  background-color: #282c34;
+  background-color: var(--primary-background-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-logo-link {
@@ -37,30 +36,44 @@
 }
 
 .App-logo-link:hover .App-logo.pulse {
-  filter: drop-shadow(0 8px 16px rgba(0, 91, 176, 0.35))
-          saturate(1.1)
-          brightness(1.05);
+  filter: drop-shadow(0 8px 16px rgba(0, 91, 176, 0.35)) saturate(1.1) brightness(1.05);
 }
 
 .Home-container {
   padding: 25px;
 }
 
+.Home-container form {
+  text-align: center;
+}
+
+.Home-container form input {
+  padding: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  outline: none;
+  color: var(--primary-background-color);
+  background-color: var(--secondary-font-color);
+}
+
+.Home-container form button {
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-font-color);
+  background-color: var(--secondary-background-color);
+}
+
+.Home-container form button:disabled {
+  opacity: 55%;
+  cursor: not-allowed;
+}
+
 .Home-container h3 {
-  color: #00ceaf;
-}
-
-a {
-  color: #09f;
-  font-size: 26px;
-  text-decoration: none;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-ul li {
-  list-style-type: none;
+  color: var(--secondary-font-color);
+  text-decoration: overline;
+  text-decoration: underline;
 }
