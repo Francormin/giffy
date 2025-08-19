@@ -1,5 +1,5 @@
-import GifDetails from "../../components/GifDetails";
-import useGlobalGifs from "../../hooks/useGlobalGifs";
+import GifDetails from "components/GifDetails";
+import useGlobalGifs from "hooks/useGlobalGifs";
 
 const Detail = ({ params }) => {
   const { id } = params;

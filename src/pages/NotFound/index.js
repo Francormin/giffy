@@ -1,4 +1,4 @@
-import ResourceNotFound from "../../components/ResourceNotFound";
+import ResourceNotFound from "components/ResourceNotFound";
 
 const NotFound = () => {
   return <ResourceNotFound />;
