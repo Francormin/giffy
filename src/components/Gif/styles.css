@@ -1,6 +1,6 @@
 .Gif-card {
   border-radius: 8px;
-  background-color: #2963eb;
+  background-color: var(--secondary-background-color);
   text-align: center;
   max-width: 100%; /* Se adapta al espacio disponible */
   overflow: hidden; /* Evita que el contenido se desborde */
@@ -25,7 +25,7 @@
 .Gif-link h4 {
   margin: 15px 0;
   font-size: 1rem;
-  color: #282c34;
+  color: var(--secondary-font-color);
 }
 
 .Gif-link img {
@@ -33,7 +33,7 @@
   width: 100%; /* Ocupa todo el ancho del padre */
   height: 100%; /* Ocupa todo el alto del padre */
   object-fit: cover; /* Recorta si es necesario para mantener proporción */
-  border-radius: 8px 8px 0 0; /* Solo bordes superiores redondeados */
+  border-radius: 0 0 8px 8px; /* Solo bordes inferiores redondeados */
   transition: transform 0.3s ease; /* Animación al hacer hover */
 }
 
