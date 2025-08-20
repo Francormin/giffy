@@ -1,0 +1,14 @@
+.category-list-container {
+  text-align: center;
+}
+
+.Category-container a {
+  color: var(--primary-font-color);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.Category-container a:hover {
+  color: var(--secondary-font-color);
+  font-style: italic;
+}
