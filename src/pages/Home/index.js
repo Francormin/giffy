@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import ListOfGifs from "../../components/ListOfGifs";
-import useGifs from "../../hooks/useGifs";
-
-const TRENDING_GIFS = ["Brasil", "Colombia", "Argentina"];
+import { useLocation } from "wouter";
+import useGifs from "hooks/useGifs";
+import ListOfGifs from "components/ListOfGifs";
+import TrendingSearches from "components/TrendingSearches";
 
 const Home = () => {
   const [keyword, setKeyword] = useState("");
@@ -22,6 +21,9 @@ const Home = () => {
   return (
     <div className="Home-container">
       <form onSubmit={handleSubmit}>
+        <button onClick={handleSubmit} disabled={!keyword.length}>
+          Search
+        </button>
         <input
           type="text"
           placeholder="Search a gif here..."
@@ -33,14 +35,7 @@ const Home = () => {
       <h3>Last search</h3>
       <ListOfGifs gifs={results} loading={loading} />
 
-      <h3>Trending gifs</h3>
-      <ul>
-        {TRENDING_GIFS.map(trendingGif =>
-          <li key={trendingGif}>
-            <Link to={`/search/${trendingGif}`}>GIFS of {trendingGif}</Link>
-          </li>
-        )}
-      </ul>
+      <TrendingSearches />
     </div>
   );
 };
