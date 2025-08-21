@@ -1,5 +1,5 @@
-import ResourceNotFound from "../ResourceNotFound";
-import Spinner from "../Spinner";
+import ResourceNotFound from "components/ResourceNotFound";
+import Spinner from "components/Spinner";
 import "./styles.css";
 
 const GifDetails = ({ gif, loading }) => {
