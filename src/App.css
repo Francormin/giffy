@@ -40,11 +40,12 @@
 }
 
 .Home-container {
-  padding: 25px;
+  padding: 20px;
 }
 
 .Home-container form {
   text-align: center;
+  margin-bottom: 34px;
 }
 
 .Home-container form input {
@@ -74,6 +75,10 @@
 
 .Home-container h3 {
   color: var(--secondary-font-color);
-  text-decoration: overline;
   text-decoration: underline;
+}
+
+.SearchResults-container h5 {
+  color: var(--secondary-font-color);
+  padding-left: 20px;
 }
