@@ -1,6 +1,5 @@
-.ListOfGifs-container h5 {
-  color: var(--primary-font-color);
-  padding-left: 20px;
+.ListOfGifs-container {
+  min-height: 100vh;
 }
 
 .ListOfGifs-grid {
