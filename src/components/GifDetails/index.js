@@ -1,13 +1,10 @@
 import ResourceNotFound from "components/ResourceNotFound";
-import Spinner from "components/Spinner";
 import "./styles.css";
 
-const GifDetails = ({ gif, loading }) => {
+const GifDetails = ({ gif }) => {
   const hasData = gif && Object.keys(gif).length > 0;
 
-  return loading ? (
-    <Spinner />
-  ) : !hasData ? (
+  return !hasData ? (
     <ResourceNotFound />
   ) : (
     <div className="GifDetails-container">
