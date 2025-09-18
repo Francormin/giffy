@@ -9,7 +9,9 @@ const TrendingSearches = () => {
     getTrendingGifs().then(setTrends);
   }, []);
 
-  return <Category name="Trendings" options={trends} />;
+  return trends.length
+    ? <Category name="Trendings" options={trends} />
+    : null;
 };
 
 export default TrendingSearches;
