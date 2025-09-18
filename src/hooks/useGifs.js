@@ -48,7 +48,7 @@ const useGifs = ({ keyword } = {}) => {
         results: [...actualGifs.results, ...nextGifs]
       }));
     });
-  }, [keywordToUse, page, setGifs]);
+  }, [page, keywordToUse, setGifs]);
 
   return {
     loading: gifs.loading,
