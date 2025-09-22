@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "wouter";
 import "./styles.css";
 
@@ -12,4 +13,6 @@ const Gif = ({ id, title, url }) => {
   );
 };
 
-export default Gif;
+export default React.memo(Gif, (prevProps, nextProps) => {
+  return prevProps.id === nextProps.id;
+});
