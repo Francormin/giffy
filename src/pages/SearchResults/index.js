@@ -25,7 +25,7 @@ const SearchResults = ({ params }) => {
 
   return (
     <div className="SearchResults-container">
-      <h5>results for: {keyword}</h5>
+      <h5>results for: {decodeURIComponent(keyword)}</h5>
       <ListOfGifs gifs={results} />
       <div id="visor" ref={externalRef}></div>
       {loading && <Spinner />}
