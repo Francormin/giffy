@@ -5,7 +5,7 @@ const getTrendingGifs = () => {
   return fetch(apiUrl)
     .then(res => res.json())
     .then(({ data }) => data)
-    .catch(error => console.error("Error fetching gifs:", error));
+    .catch(error => console.error("Error fetching trending gifs:", error));
 };
 
 export default getTrendingGifs;
