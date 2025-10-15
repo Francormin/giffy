@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
+import { Redirect } from "wouter";
 import debounce from "just-debounce-it";
 import useGifs from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";
@@ -7,7 +8,7 @@ import Spinner from "components/Spinner";
 
 const SearchResults = ({ params }) => {
   const { keyword } = params;
-  const { loading, results, setPage } = useGifs({ keyword });
+  const { loading, gifs, setPage, isResultEmpty } = useGifs({ keyword });
   const externalRef = useRef();
   const { show } = useNearScreen({
     externalRef: loading ? null : externalRef,
@@ -23,10 +24,12 @@ const SearchResults = ({ params }) => {
     if (show) debounceHandleNextPage();
   }, [show, debounceHandleNextPage]);
 
-  return (
+  return isResultEmpty ? (
+    <Redirect to="/404" />
+  ) : (
     <div className="SearchResults-container">
       <h5>results for: {decodeURIComponent(keyword)}</h5>
-      <ListOfGifs gifs={results} />
+      <ListOfGifs gifs={gifs} />
       <div id="visor" ref={externalRef}></div>
       {loading && <Spinner />}
     </div>
