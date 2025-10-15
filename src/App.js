@@ -24,6 +24,7 @@ const App = () => {
               <Route path="/" component={HomePage} />
               <Route path="/search/:keyword" component={SearchResults} />
               <Route path="/gif/:id" component={Detail} />
+              <Route path="/404" component={NotFound} />
               <Route component={NotFound} />
             </Switch>
           </GifsContextProvider>
