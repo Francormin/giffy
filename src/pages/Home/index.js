@@ -1,13 +1,15 @@
 import { useCallback } from "react";
 import { useLocation } from "wouter";
-import useGifs from "hooks/useGifs";
+import useGlobalGifs from "hooks/useGlobalGifs";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
 
 const Home = () => {
   const [path, pushLocation] = useLocation();
-  const { results } = useGifs();
+  const { gifs } = useGlobalGifs();
+
+  const first15Gifs = gifs?.slice(0, 15);
 
   const handleSubmit = useCallback((({ keyword }) => {
     pushLocation(`/search/${keyword}`);
@@ -18,7 +20,7 @@ const Home = () => {
       <SearchForm onSubmit={handleSubmit} />
 
       <h3>Last search</h3>
-      <ListOfGifs gifs={results} />
+      <ListOfGifs gifs={first15Gifs} />
 
       <TrendingSearches />
     </div>
