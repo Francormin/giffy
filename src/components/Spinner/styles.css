@@ -1,5 +1,5 @@
 .loader {
-  margin: 0 auto;
+  margin: auto;
   border: 16px solid #f3f3f3; /* Light grey background border */
   border-top: 16px solid var(--secondary-background-color); /* Blue spinning border */
   border-radius: 50%; /* Makes it a circle */
