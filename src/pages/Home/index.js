@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useLocation } from "wouter";
 import useGlobalGifs from "hooks/useGlobalGifs";
-import useTitle from "hooks/useTitle";
+import useSEO from "hooks/useSEO";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
@@ -12,11 +12,15 @@ const Home = () => {
 
   const first15Gifs = gifs?.slice(0, 15);
 
-  useTitle("Home");
+  useSEO({
+    title: "Home",
+    description: "Giffy is a platform for discovering and sharing GIFs."
+  });
 
-  const handleSubmit = useCallback((({ keyword }) => {
-    pushLocation(`/search/${keyword}`);
-  }), [pushLocation]);
+  const handleSubmit = useCallback(
+    ({ keyword }) => pushLocation(`/search/${keyword}`),
+    [pushLocation]
+  );
 
   return (
     <div className="Home-container">
