@@ -40,7 +40,7 @@
 }
 
 .Home-container {
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 .Home-container form {
@@ -78,7 +78,7 @@
   text-decoration: underline;
 }
 
-.SearchResults-container h5 {
+.SearchResults-container {
   color: var(--secondary-font-color);
-  padding-left: 20px;
+  padding: 0px 20px;
 }
