@@ -6,8 +6,7 @@ const getGifsByKeyword = ({ limit = 15, keyword, page = 0 } = {}) => {
 
   return fetch(apiUrl)
     .then(res => res.json())
-    .then(fromApiResponseToGifs)
-    .catch(error => console.error("Error fetching gifs:", error));
+    .then(fromApiResponseToGifs);
 };
 
 export default getGifsByKeyword;

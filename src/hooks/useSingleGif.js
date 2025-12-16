@@ -27,7 +27,11 @@ const useSingleGif = id => {
     }
   }, [gif, id]);
 
-  return { gif, isLoading, isError };
+  return { 
+    gif,
+    isLoading,
+    isError
+  };
 };
 
 export default useSingleGif;

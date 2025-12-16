@@ -1,24 +1,35 @@
 import { Redirect } from "wouter";
+import { Helmet } from "react-helmet";
+import useSingleGif from "hooks/useSingleGif";
 import GifDetails from "components/GifDetails";
 import Spinner from "components/Spinner";
-import useSingleGif from "hooks/useSingleGif";
-import useSEO from "hooks/useSEO";
 
 const Detail = ({ params }) => {
   const { id } = params;
   const { gif, isLoading, isError } = useSingleGif(id);
 
-  const title = gif ? gif.title : "";
-  const description = gif ? `View the detail of GIF titled "${gif.title}" on Giffy.` : "";
-  useSEO({ title, description });
-
   return isLoading ? (
-    <Spinner />
-  ) : isError ? (
-    <Redirect to="/404" />
+    <>
+      <Helmet>
+        <title>Loading...</title>
+        <meta name="description" content="Loading..." />
+      </Helmet>
+      <Spinner />
+    </>
   ) : gif ? (
-    <GifDetails gif={gif} />
-  ) : null;
+    <>
+      <Helmet>
+        <title>{gif.title} | Giffy</title>
+        <meta
+          name="description"
+          content={`View the detail of GIF titled "${gif.title}" on Giffy.`}
+        />
+      </Helmet>
+      <GifDetails gif={gif} />
+    </>
+  ) : (
+    <Redirect to="/404" />
+  );
 };
 
 export default Detail;
