@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 import { Link, Route, Switch } from "wouter";
 import { GifsContextProvider } from "context/GifsContext";
-import ScrollToTop from "components/ScrollToTop";
 import SearchResults from "pages/SearchResults";
 import Detail from "pages/Detail";
 import NotFound from "pages/NotFound";
+import ScrollToTop from "components/ScrollToTop";
 import "App.css";
 import "theme.css";
 

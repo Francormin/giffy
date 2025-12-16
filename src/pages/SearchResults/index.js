@@ -2,8 +2,9 @@ import { useCallback, useEffect, useRef } from "react";
 import { Redirect } from "wouter";
 import debounce from "just-debounce-it";
 import useGifs from "hooks/useGifs";
-import ListOfGifs from "components/ListOfGifs";
 import useNearScreen from "hooks/useNearScreen";
+import useTitle from "hooks/useTitle";
+import ListOfGifs from "components/ListOfGifs";
 import Spinner from "components/Spinner";
 
 const SearchResults = ({ params }) => {
@@ -14,6 +15,9 @@ const SearchResults = ({ params }) => {
     externalRef: loading ? null : externalRef,
     once: false
   });
+
+  const title = gifs.length? `Search results for ${decodeURIComponent(keyword)}` : "";
+  useTitle(title);
 
   const debounceHandleNextPage = useCallback(
     debounce(() => setPage(prevPage => prevPage + 1), 500),
