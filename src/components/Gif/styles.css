@@ -1,5 +1,12 @@
 .Gif-card {
   height: 100%;
+  transition: transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .Gif-card:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .Gif-link {
@@ -14,9 +21,24 @@
 .Gif-link h4 {
   font-size: 12px;
   background: rgba(0, 0, 0, 0.837);
-  bottom: 0;
   position: absolute;
+  bottom: 0;
   margin: 0;
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .Gif-link h4 {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .Gif-card:hover h4 {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .Gif-link img {

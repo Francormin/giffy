@@ -14,15 +14,15 @@ const SearchForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <button onClick={handleSubmit} disabled={!keyword.length}>
-        Search
-      </button>
       <input
         type="text"
         placeholder="Search a gif here..."
         value={keyword}
         onChange={handleChange}
       />
+      <button onClick={handleSubmit} disabled={!keyword.length}>
+        Search
+      </button>
     </form>
   );
 }
