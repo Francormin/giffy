@@ -9,7 +9,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--gridList-column), 1fr));
   grid-auto-rows: var(--gridList-rows);
-  grid-template-rows: masonry;
   grid-auto-flow: row dense;
   gap: var(--gridList-gap, 6px);
   align-items: center;
