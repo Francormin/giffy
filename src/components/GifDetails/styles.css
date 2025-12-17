@@ -1,40 +1,61 @@
-.GifDetails-container {
+.GifDetails {
+  max-width: 1100px;
+  margin: 40px auto;
   padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
-.GifDetails-card {
-  max-width: 500px; /* Controla el ancho máximo */
-  margin: 20px auto; /* Centrado horizontal */
-  border-radius: 8px;
-  background-color: var(--secondary-background-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* GIF */
+.GifDetails-media img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* Info */
+.GifDetails-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   color: var(--secondary-font-color);
-  text-align: left; /* Mantiene la lectura natural */
-  line-height: 1.5;
-  padding-bottom: 10px;
-  text-align: center;
 }
 
-.GifDetails-card img {
-  width: 100%; /* Ajusta al ancho del contenedor */
-  height: auto; /* Mantiene proporción */
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  margin-bottom: 15px;
-  object-fit: cover; /* Evita deformaciones en la imagen */
+.GifDetails-title {
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
-.GifDetails-card img:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+.GifDetails-meta {
+  display: flex;
+  gap: 10px;
 }
 
-.GifDetails-card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  background-color: var(--secondary-background-color);
 }
 
-.GifDetails-card span {
-  display: block; /* Mantiene cada <span> en su línea */
-  margin-bottom: 6px;
-  font-size: 0.95rem;
+.GifDetails-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.GifDetails-user {
+  margin-top: auto;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .GifDetails {
+    grid-template-columns: 1fr;
+  }
 }
