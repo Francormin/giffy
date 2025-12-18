@@ -7,9 +7,9 @@ const Category = ({ name, options }) => {
       <h3>{name}</h3>
       <div className="category-list-container">
         {options.map(option => (
-          <span key={option}>
-            -<Link to={`/search/${option}`}>{option}</Link>-
-          </span>
+          <Link to={`/search/${option}`} key={option} className="category-item">
+            {option}
+          </Link>
         ))}
       </div>
     </div>
