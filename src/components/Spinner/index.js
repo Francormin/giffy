@@ -1,7 +1,13 @@
 import "./styles.css";
 
-const Spinner = () => {
-  return <div className="loader"></div>;
-};
+const Spinner = () => (
+  <div className="loader-container">
+    <div className="loader">
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+);
 
 export default Spinner;
