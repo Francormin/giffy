@@ -5,13 +5,17 @@ import Spinner from "components/Spinner";
 const TrendingSearches = React.lazy(() => import("./TrendingSearches"));
 
 const LazyTrendingSearches = () => {
-  const { show, elementRef } = useNearScreen({ distance: "0px" });
+  const { show, elementRef } = useNearScreen({ distance: "100px" });
 
   return (
     <div ref={elementRef}>
-      <Suspense fallback={<Spinner />}>
-        {show ? <TrendingSearches /> : <Spinner />}
-      </Suspense>
+      {show ? (
+        <Suspense fallback={<Spinner />}>
+          <TrendingSearches />
+        </Suspense>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };
