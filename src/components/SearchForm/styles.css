@@ -1,4 +1,4 @@
-.SearchForm form {
+.SearchForm {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -7,7 +7,7 @@
   margin: 0 auto 38px;
 }
 
-.SearchForm form input {
+.SearchForm input {
   padding: 14px 16px;
   border-radius: 10px;
   border: none;
@@ -17,11 +17,11 @@
   background-color: var(--secondary-font-color);
 }
 
-.SearchForm form input:focus {
+.SearchForm input:focus {
   box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.4);
 }
 
-.SearchForm form button {
+.SearchForm button {
   padding: 14px 16px;
   border-radius: 10px;
   border: none;
@@ -32,30 +32,30 @@
 }
 
 @media (min-width: 600px) {
-  .SearchForm form {
+  .SearchForm {
     flex-direction: row;
     gap: 0;
   }
 
-  .SearchForm form input {
+  .SearchForm input {
     flex: 1;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .SearchForm form button {
+  .SearchForm button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 }
 
 @media (hover: hover) {
-  .SearchForm form button:hover {
+  .SearchForm button:hover:not(:disabled) {
     filter: brightness(1.1);
   }
 }
 
-.SearchForm form button:disabled {
+.SearchForm button:disabled {
   opacity: 55%;
   cursor: not-allowed;
 }
