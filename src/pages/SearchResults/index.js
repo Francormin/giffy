@@ -6,6 +6,7 @@ import useGifs from "hooks/useGifs";
 import useNearScreen from "hooks/useNearScreen";
 import ListOfGifs from "components/ListOfGifs";
 import Spinner from "components/Spinner";
+import SearchForm from "components/SearchForm";
 
 const SearchResults = ({ params }) => {
   const { keyword } = params;
@@ -36,6 +37,7 @@ const SearchResults = ({ params }) => {
         />
       </Helmet>
       <div className="SearchResults-container">
+        <SearchForm />
         <h5>results for: {decodeURIComponent(keyword)}</h5>
         <ListOfGifs gifs={gifs} />
         <div id="visor" ref={externalRef}></div>

@@ -42,68 +42,6 @@
   padding: 0px 20px;
 }
 
-.Home-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: stretch;
-  max-width: 370px;
-  margin: 0 auto 38px;
-}
-
-.Home-container form input {
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: var(--primary-background-color);
-  background-color: var(--secondary-font-color);
-}
-
-.Home-container form input:focus {
-  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.4);
-}
-
-.Home-container form button {
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--secondary-font-color);
-  background-color: var(--secondary-background-color);
-}
-
-@media (min-width: 600px) {
-  .Home-container form {
-    flex-direction: row;
-    gap: 0;
-  }
-
-  .Home-container form input {
-    flex: 1;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .Home-container form button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-}
-
-@media (hover: hover) {
-  .Home-container form button:hover {
-    filter: brightness(1.1);
-  }
-}
-
-.Home-container form button:disabled {
-  opacity: 55%;
-  cursor: not-allowed;
-}
-
 .Home-container h3 {
   color: var(--secondary-font-color);
   text-decoration: underline;
