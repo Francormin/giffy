@@ -1,26 +1,7 @@
 import React, { useReducer } from "react";
 import { useLocation } from "wouter";
+import { LANGUAGES, RATINGS } from "constants/search";
 import "./styles.css";
-
-const RATINGS = {
-  g: "G (General Audiences)",
-  pg: "PG (Parental Guidance Suggested)",
-  "pg-13": "PG-13 (Parents Strongly Cautioned)",
-  r: "R (Restricted)"
-};
-
-const LANGUAGES = {
-  en: "English",
-  es: "Spanish",
-  fr: "French",
-  de: "German",
-  it: "Italian",
-  pt: "Portuguese",
-  ru: "Russian",
-  ja: "Japanese",
-  ko: "Korean",
-  "zh-CN": "Chinese (Simplified)"
-};
 
 const ACTIONS = {
   SET_KEYWORD: "SET_KEYWORD",
