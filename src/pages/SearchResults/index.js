@@ -10,7 +10,7 @@ import SearchForm from "components/SearchForm";
 
 const SearchResults = ({ params }) => {
   const { keyword, rating = "g", language = "en" } = params;
-  const { gifs, isLoading, setPage } = useGifs({ keyword, rating, language });
+  const { gifs, isLoading, isResultEmpty, setPage } = useGifs({ keyword, rating, language });
   const externalRef = useRef();
 
   const { show } = useNearScreen({
@@ -27,7 +27,7 @@ const SearchResults = ({ params }) => {
     if (show) debounceHandleNextPage();
   }, [show, debounceHandleNextPage]);
 
-  return gifs?.length ? (
+  return !isResultEmpty ? (
     <>
       <Helmet>
         <title>{`Search results for ${decodeURIComponent(keyword)} | Giffy`}</title>
