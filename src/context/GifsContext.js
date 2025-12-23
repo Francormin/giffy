@@ -15,7 +15,7 @@ export const GifsContextProvider = ({ children }) => {
   }, [gifs]);
 
   return (
-    <GifsContext.Provider value={{gifs, setGifs}}>
+    <GifsContext.Provider value={{ gifs, setGifs }}>
       {children}
     </GifsContext.Provider>
   );

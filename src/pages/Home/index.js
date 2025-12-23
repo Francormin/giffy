@@ -1,12 +1,14 @@
 import { Helmet } from "react-helmet";
 import useGlobalGifs from "hooks/useGlobalGifs";
+import useGifs from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
 
 const Home = () => {
-  const { gifs } = useGlobalGifs();
+  useGifs();
 
+  const { gifs } = useGlobalGifs();
   const first15Gifs = gifs?.slice(0, 15);
 
   return (

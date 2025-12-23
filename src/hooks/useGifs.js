@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
+import { INITIAL_PAGE } from "constants/search";
 import GifsContext from "context/GifsContext";
 import getGifsByKeyword from "services/getGifsByKeyword";
-
-const INITIAL_PAGE = 0;
 
 const useGifs = ({ keyword, rating, language } = {}) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +13,8 @@ const useGifs = ({ keyword, rating, language } = {}) => {
   const keywordToUse = keyword || localStorage.getItem("lastKeyword") || "random";
 
   useEffect(() => {
+    if (!keyword && gifs?.length > 0) return;
+
     setIsLoading(true);
 
     getGifsByKeyword({ keyword: keywordToUse, rating, language })
@@ -23,12 +24,13 @@ const useGifs = ({ keyword, rating, language } = {}) => {
           setIsResultEmpty(true);
           return;
         }
+
         setGifs(gifs);
         setIsLoading(false);
         setIsResultEmpty(false);
         localStorage.setItem("lastKeyword", keywordToUse);
       });
-  }, [keywordToUse, rating, language, setGifs]);
+  }, [keyword, keywordToUse, rating, language, gifs, setGifs]);
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
@@ -39,12 +41,11 @@ const useGifs = ({ keyword, rating, language } = {}) => {
       .then(nextGifs => {
         if (nextGifs.length === 0) {
           setIsLoading(false);
-          setIsResultEmpty(true);
           return;
         }
+
         setGifs(actualGifs => [...actualGifs, ...nextGifs]);
         setIsLoading(false);
-        setIsResultEmpty(false);
       });
   }, [keywordToUse, rating, language, page, setGifs]);
 

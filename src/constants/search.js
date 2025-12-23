@@ -1,3 +1,5 @@
+export const INITIAL_PAGE = 0;
+
 export const RATINGS = {
   g: "G (General Audiences)",
   pg: "PG (Parental Guidance Suggested)",
