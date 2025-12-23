@@ -1,10 +1,11 @@
 .ResourceNotFound-container {
-  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .ResourceNotFound-container img {
-  width: 320px;
-  height: 420px;
+  width: 330px;
+  height: 410px;
   background-color: var(--secondary-font-color);
-  border-radius: 10%;
+  border-radius: 15px;
 }
