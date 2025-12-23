@@ -2,9 +2,25 @@ import React, { useReducer } from "react";
 import { useLocation } from "wouter";
 import "./styles.css";
 
-const RATINGS = ["g", "pg", "pg-13", "r"];
+const RATINGS = {
+  g: "G (General Audiences)",
+  pg: "PG (Parental Guidance Suggested)",
+  "pg-13": "PG-13 (Parents Strongly Cautioned)",
+  r: "R (Restricted)"
+};
 
-const LANGUAGES = ["en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh-CN"];
+const LANGUAGES = {
+  en: "English",
+  es: "Spanish",
+  fr: "French",
+  de: "German",
+  it: "Italian",
+  pt: "Portuguese",
+  ru: "Russian",
+  ja: "Japanese",
+  ko: "Korean",
+  "zh-CN": "Chinese (Simplified)"
+};
 
 const ACTIONS = {
   SET_KEYWORD: "SET_KEYWORD",
@@ -71,47 +87,25 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
       <button onClick={handleSubmit} disabled={!keyword.length}>
         Search
       </button>
+
       <select value={rating} onChange={handleChangeRating}>
-        <option disabled value="">Rating</option>
-        {RATINGS.map(ratingOption => (
-          <option key={ratingOption} value={ratingOption}>
-            {ratingOption === "g"
-              ? "G (General Audiences)"
-              : ratingOption === "pg"
-              ? "PG (Parental Guidance Suggested)"
-              : ratingOption === "pg-13"
-              ? "PG-13 (Parents Strongly Cautioned)"
-              : ratingOption === "r"
-              ? "R (Restricted)"
-              : ratingOption}
+        <option disabled value="">
+          Rating
+        </option>
+        {Object.entries(RATINGS).map(([value, label]) => (
+          <option key={value} value={value}>
+            {label}
           </option>
         ))}
       </select>
+
       <select value={language} onChange={handleChangeLanguage}>
-        <option disabled value="">Language</option>
-        {LANGUAGES.map(languageOption => (
-          <option key={languageOption} value={languageOption}>
-            {languageOption === "en"
-              ? "English"
-              : languageOption === "es"
-              ? "Spanish"
-              : languageOption === "fr"
-              ? "French"
-              : languageOption === "de"
-              ? "German"
-              : languageOption === "it"
-              ? "Italian"
-              : languageOption === "pt"
-              ? "Portuguese"
-              : languageOption === "ru"
-              ? "Russian"
-              : languageOption === "ja"
-              ? "Japanese"
-              : languageOption === "ko"
-              ? "Korean"
-              : languageOption === "zh-CN"
-              ? "Chinese (Simplified)"
-              : languageOption}
+        <option disabled value="">
+          Language
+        </option>
+        {Object.entries(LANGUAGES).map(([value, label]) => (
+          <option key={value} value={value}>
+            {label}
           </option>
         ))}
       </select>
