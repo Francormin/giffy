@@ -6,7 +6,8 @@ import "./styles.css";
 const ACTIONS = {
   SET_KEYWORD: "SET_KEYWORD",
   SET_RATING: "SET_RATING",
-  SET_LANGUAGE: "SET_LANGUAGE"
+  SET_LANGUAGE: "SET_LANGUAGE",
+  RESET_FILTERS: "RESET_FILTERS"
 };
 
 const ACTIONS_REDUCERS = {
@@ -21,6 +22,12 @@ const ACTIONS_REDUCERS = {
   [ACTIONS.SET_LANGUAGE]: (state, action) => ({
     ...state,
     language: action.payload
+  }),
+  [ACTIONS.RESET_FILTERS]: state => ({
+    ...state,
+    keyword: "",
+    rating: "g",
+    language: "en"
   })
 };
 
@@ -57,39 +64,55 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
     dispatch({ type: ACTIONS.SET_LANGUAGE, payload: event.target.value });
   };
 
+  const handleResetFilters = () => {
+    dispatch({ type: ACTIONS.RESET_FILTERS });
+  };
+
   return (
     <form onSubmit={handleSubmit} className="SearchForm">
-      <input
-        type="text"
-        placeholder="Search a gif here..."
-        value={keyword}
-        onChange={handleChange}
-      />
-      <button onClick={handleSubmit} disabled={!keyword.length}>
-        Search
-      </button>
+      <div className="SearchForm-main">
+        <input
+          type="text"
+          placeholder="Search a gif here..."
+          value={keyword}
+          onChange={handleChange}
+        />
+        <button
+          type="submit"
+          disabled={!keyword.length}
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
+      </div>
 
-      <select value={rating} onChange={handleChangeRating}>
-        <option disabled value="">
-          Rating
-        </option>
-        {Object.entries(RATINGS).map(([value, label]) => (
-          <option key={value} value={value}>
-            {label}
-          </option>
-        ))}
-      </select>
+      <div className="SearchForm-filters">
+        <select value={rating} onChange={handleChangeRating}>
+          <option disabled value="">Rating</option>
+          {Object.entries(RATINGS).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
 
-      <select value={language} onChange={handleChangeLanguage}>
-        <option disabled value="">
-          Language
-        </option>
-        {Object.entries(LANGUAGES).map(([value, label]) => (
-          <option key={value} value={value}>
-            {label}
-          </option>
-        ))}
-      </select>
+        <select value={language} onChange={handleChangeLanguage}>
+          <option disabled value="">Language</option>
+          {Object.entries(LANGUAGES).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+
+        <button
+          type="button"
+          disabled={!keyword.length && rating === "g" && language === "en"}
+          onClick={() => handleResetFilters()}
+        >
+          Reset Filters
+        </button>
+      </div>
     </form>
   );
 };
