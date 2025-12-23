@@ -9,23 +9,21 @@ const ACTIONS = {
   SET_RATING: "SET_RATING"
 };
 
+const ACTIONS_REDUCERS = {
+  [ACTIONS.SET_KEYWORD]: (state, action) => ({
+    ...state,
+    keyword: action.payload,
+    times: state.times + 1
+  }),
+  [ACTIONS.SET_RATING]: (state, action) => ({
+    ...state,
+    rating: action.payload
+  })
+};
+
 const reducer = (state, action) => {
-  switch (action.type) {
-    case ACTIONS.SET_KEYWORD:
-      return {
-        ...state,
-        keyword: action.payload,
-        times: state.times + 1
-      };
-    case ACTIONS.SET_RATING:
-      return {
-        ...state,
-        rating: action.payload
-      };
-    default: {
-      return state;
-    }
-  }
+  const handler = ACTIONS_REDUCERS[action.type];
+  return handler ? handler(state, action) : state;
 };
 
 const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
@@ -69,7 +67,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
           <option key={ratingOption}>{ratingOption}</option>
         ))}
       </select>
-      <p style={{ color: "white" }}>Searches made: {times}</p>
+      <span style={{ color: "white" }}>Searches made: {times}</span>
     </form>
   );
 };
