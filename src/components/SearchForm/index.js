@@ -4,20 +4,26 @@ import "./styles.css";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
+const LANGUAGES = ["en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh-CN"];
+
 const ACTIONS = {
   SET_KEYWORD: "SET_KEYWORD",
-  SET_RATING: "SET_RATING"
+  SET_RATING: "SET_RATING",
+  SET_LANGUAGE: "SET_LANGUAGE"
 };
 
 const ACTIONS_REDUCERS = {
   [ACTIONS.SET_KEYWORD]: (state, action) => ({
     ...state,
-    keyword: action.payload,
-    times: state.times + 1
+    keyword: action.payload
   }),
   [ACTIONS.SET_RATING]: (state, action) => ({
     ...state,
     rating: action.payload
+  }),
+  [ACTIONS.SET_LANGUAGE]: (state, action) => ({
+    ...state,
+    language: action.payload
   })
 };
 
@@ -26,14 +32,14 @@ const reducer = (state, action) => {
   return handler ? handler(state, action) : state;
 };
 
-const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
+const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage = "en" }) => {
   const [state, dispatch] = useReducer(reducer, {
     keyword: decodeURIComponent(initialKeyword),
     rating: initialRating,
-    times: 0
+    language: initialLanguage
   });
 
-  const { keyword, rating, times } = state;
+  const { keyword, rating, language } = state;
 
   const [path, pushLocation] = useLocation();
 
@@ -43,11 +49,15 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    pushLocation(`/search/${keyword}/${rating}`);
+    pushLocation(`/search/${keyword}/${rating}/${language}`);
   };
 
   const handleChangeRating = event => {
     dispatch({ type: ACTIONS.SET_RATING, payload: event.target.value });
+  };
+
+  const handleChangeLanguage = event => {
+    dispatch({ type: ACTIONS.SET_LANGUAGE, payload: event.target.value });
   };
 
   return (
@@ -62,12 +72,49 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
         Search
       </button>
       <select value={rating} onChange={handleChangeRating}>
-        <option disabled>Rating type</option>
+        <option disabled value="">Rating</option>
         {RATINGS.map(ratingOption => (
-          <option key={ratingOption}>{ratingOption}</option>
+          <option key={ratingOption} value={ratingOption}>
+            {ratingOption === "g"
+              ? "G (General Audiences)"
+              : ratingOption === "pg"
+              ? "PG (Parental Guidance Suggested)"
+              : ratingOption === "pg-13"
+              ? "PG-13 (Parents Strongly Cautioned)"
+              : ratingOption === "r"
+              ? "R (Restricted)"
+              : ratingOption}
+          </option>
         ))}
       </select>
-      <span style={{ color: "white" }}>Searches made: {times}</span>
+      <select value={language} onChange={handleChangeLanguage}>
+        <option disabled value="">Language</option>
+        {LANGUAGES.map(languageOption => (
+          <option key={languageOption} value={languageOption}>
+            {languageOption === "en"
+              ? "English"
+              : languageOption === "es"
+              ? "Spanish"
+              : languageOption === "fr"
+              ? "French"
+              : languageOption === "de"
+              ? "German"
+              : languageOption === "it"
+              ? "Italian"
+              : languageOption === "pt"
+              ? "Portuguese"
+              : languageOption === "ru"
+              ? "Russian"
+              : languageOption === "ja"
+              ? "Japanese"
+              : languageOption === "ko"
+              ? "Korean"
+              : languageOption === "zh-CN"
+              ? "Chinese (Simplified)"
+              : languageOption}
+          </option>
+        ))}
+      </select>
     </form>
   );
 };

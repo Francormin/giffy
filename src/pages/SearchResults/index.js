@@ -9,8 +9,8 @@ import Spinner from "components/Spinner";
 import SearchForm from "components/SearchForm";
 
 const SearchResults = ({ params }) => {
-  const { keyword, rating = "g" } = params;
-  const { gifs, isLoading, setPage } = useGifs({ keyword , rating});
+  const { keyword, rating = "g", language = "en" } = params;
+  const { gifs, isLoading, setPage } = useGifs({ keyword, rating, language });
   const externalRef = useRef();
 
   const { show } = useNearScreen({
@@ -37,7 +37,7 @@ const SearchResults = ({ params }) => {
         />
       </Helmet>
       <div className="SearchResults-container">
-        <SearchForm initialKeyword={keyword} initialRating={rating} />
+        <SearchForm initialKeyword={keyword} initialRating={rating} initialLanguage={language} />
         <h5>results for: {decodeURIComponent(keyword)}</h5>
         <ListOfGifs gifs={gifs} />
         <div id="visor" ref={externalRef}></div>
