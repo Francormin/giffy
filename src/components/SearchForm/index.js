@@ -1,16 +1,46 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import { useLocation } from "wouter";
 import "./styles.css";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
+const ACTIONS = {
+  SET_KEYWORD: "SET_KEYWORD",
+  SET_RATING: "SET_RATING"
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.SET_KEYWORD:
+      return {
+        ...state,
+        keyword: action.payload,
+        times: state.times + 1
+      };
+    case ACTIONS.SET_RATING:
+      return {
+        ...state,
+        rating: action.payload
+      };
+    default: {
+      return state;
+    }
+  }
+};
+
 const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
-  const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword));
-  const [rating, setRating] = useState(initialRating);
+  const [state, dispatch] = useReducer(reducer, {
+    keyword: decodeURIComponent(initialKeyword),
+    rating: initialRating,
+    times: 0
+  });
+
+  const { keyword, rating, times } = state;
+
   const [path, pushLocation] = useLocation();
 
   const handleChange = event => {
-    setKeyword(event.target.value);
+    dispatch({ type: ACTIONS.SET_KEYWORD, payload: event.target.value });
   };
 
   const handleSubmit = event => {
@@ -19,7 +49,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
   };
 
   const handleChangeRating = event => {
-    setRating(event.target.value);
+    dispatch({ type: ACTIONS.SET_RATING, payload: event.target.value });
   };
 
   return (
@@ -39,6 +69,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g" }) => {
           <option key={ratingOption}>{ratingOption}</option>
         ))}
       </select>
+      <p style={{ color: "white" }}>Searches made: {times}</p>
     </form>
   );
 };
