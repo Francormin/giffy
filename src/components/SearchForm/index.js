@@ -1,54 +1,21 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useLocation } from "wouter";
 import { LANGUAGES, RATINGS } from "constants/search";
+import useForm from "hooks/useForm";
 import "./styles.css";
 
-const ACTIONS = {
-  SET_KEYWORD: "SET_KEYWORD",
-  SET_RATING: "SET_RATING",
-  SET_LANGUAGE: "SET_LANGUAGE",
-  RESET_FILTERS: "RESET_FILTERS"
-};
-
-const ACTIONS_REDUCERS = {
-  [ACTIONS.SET_KEYWORD]: (state, action) => ({
-    ...state,
-    keyword: action.payload
-  }),
-  [ACTIONS.SET_RATING]: (state, action) => ({
-    ...state,
-    rating: action.payload
-  }),
-  [ACTIONS.SET_LANGUAGE]: (state, action) => ({
-    ...state,
-    language: action.payload
-  }),
-  [ACTIONS.RESET_FILTERS]: state => ({
-    ...state,
-    keyword: "",
-    rating: "g",
-    language: "en"
-  })
-};
-
-const reducer = (state, action) => {
-  const handler = ACTIONS_REDUCERS[action.type];
-  return handler ? handler(state, action) : state;
-};
-
 const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage = "en" }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    keyword: decodeURIComponent(initialKeyword),
-    rating: initialRating,
-    language: initialLanguage
-  });
-
-  const { keyword, rating, language } = state;
+  const { keyword, rating, language, updateKeyword, updateRating, updateLanguage, resetFilters } =
+    useForm({
+      initialKeyword,
+      initialRating,
+      initialLanguage
+    });
 
   const [path, pushLocation] = useLocation();
 
   const handleChange = event => {
-    dispatch({ type: ACTIONS.SET_KEYWORD, payload: event.target.value });
+    updateKeyword(event.target.value);
   };
 
   const handleSubmit = event => {
@@ -57,15 +24,15 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
   };
 
   const handleChangeRating = event => {
-    dispatch({ type: ACTIONS.SET_RATING, payload: event.target.value });
+    updateRating(event.target.value);
   };
 
   const handleChangeLanguage = event => {
-    dispatch({ type: ACTIONS.SET_LANGUAGE, payload: event.target.value });
+    updateLanguage(event.target.value);
   };
 
   const handleResetFilters = () => {
-    dispatch({ type: ACTIONS.RESET_FILTERS });
+    resetFilters();
   };
 
   return (
