@@ -1,4 +1,4 @@
-const { useReducer } = require("react");
+import { useReducer } from "react";
 
 const ACTIONS = {
   SET_KEYWORD: "SET_KEYWORD",
@@ -35,7 +35,7 @@ const REDUCER = (state, action) => {
 
 const useForm = ({ initialKeyword, initialRating, initialLanguage }) => {
   const [state, dispatch] = useReducer(REDUCER, {
-    keyword: decodeURIComponent(initialKeyword),
+    keyword: initialKeyword ? decodeURIComponent(initialKeyword) : "",
     rating: initialRating,
     language: initialLanguage
   });

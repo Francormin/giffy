@@ -44,18 +44,16 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           value={keyword}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          disabled={!keyword.length}
-          onClick={handleSubmit}
-        >
+        <button type="submit" disabled={!keyword.length}>
           Search
         </button>
       </div>
 
       <div className="SearchForm-filters">
         <select value={rating} onChange={handleChangeRating}>
-          <option disabled value="">Rating</option>
+          <option disabled value="">
+            Rating
+          </option>
           {Object.entries(RATINGS).map(([value, label]) => (
             <option key={value} value={value}>
               {label}
@@ -64,7 +62,9 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
         </select>
 
         <select value={language} onChange={handleChangeLanguage}>
-          <option disabled value="">Language</option>
+          <option disabled value="">
+            Language
+          </option>
           {Object.entries(LANGUAGES).map(([value, label]) => (
             <option key={value} value={value}>
               {label}
