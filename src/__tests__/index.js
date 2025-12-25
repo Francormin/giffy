@@ -30,7 +30,7 @@ test("home renders a gif card for each gif from mocked API", async () => {
 test("search form could be used", async () => {
   render(<App />);
   const input = await screen.findByRole("textbox");
-  const button = await screen.findByRole("button");
+  const button = await screen.findByRole("button", { name: /Search/i });
 
   fireEvent.change(input, { target: { value: "Matrix" } });
   fireEvent.click(button);
