@@ -1,4 +1,8 @@
-export const INITIAL_PAGE = 0;
+export const DEFAULT_FILTERS = {
+  keyword: "",
+  rating: "g",
+  language: "en"
+};
 
 export const RATINGS = {
   g: "G (General Audiences)",
@@ -19,3 +23,5 @@ export const LANGUAGES = {
   ko: "Korean",
   "zh-CN": "Chinese (Simplified)"
 };
+
+export const INITIAL_PAGE = 0;
