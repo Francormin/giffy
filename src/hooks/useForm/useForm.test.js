@@ -1,9 +1,11 @@
 import { renderHook, act } from "@testing-library/react";
 import useForm from ".";
 
+const setup = initialValues => renderHook(() => useForm(initialValues));
+
 describe("useForm", () => {
   test("should initialize with default values if no initial values are provided", () => {
-    const { result } = renderHook(() => useForm());
+    const { result } = setup();
 
     expect(result.current.keyword).toBe("");
     expect(result.current.rating).toBe("g");
@@ -11,9 +13,11 @@ describe("useForm", () => {
   });
 
   test("should initialize with provided values", () => {
-    const { result } = renderHook(() =>
-      useForm({ initialKeyword: "cats%20funny", initialRating: "pg", initialLanguage: "es" })
-    );
+    const { result } = setup({
+      initialKeyword: "cats%20funny",
+      initialRating: "pg",
+      initialLanguage: "es"
+    });
 
     expect(result.current.keyword).toBe("cats funny");
     expect(result.current.rating).toBe("pg");
@@ -21,9 +25,11 @@ describe("useForm", () => {
   });
 
   test("should update keyword", () => {
-    const { result } = renderHook(() =>
-      useForm({ initialKeyword: "", initialRating: "r", initialLanguage: "ru" })
-    );
+    const { result } = setup({
+      initialKeyword: "",
+      initialRating: "r",
+      initialLanguage: "ru"
+    });
 
     act(() => {
       result.current.updateKeyword("dogs");
@@ -35,9 +41,11 @@ describe("useForm", () => {
   });
 
   test("should update rating", () => {
-    const { result } = renderHook(() =>
-      useForm({ initialKeyword: "", initialRating: "g", initialLanguage: "it" })
-    );
+    const { result } = setup({
+      initialKeyword: "",
+      initialRating: "g",
+      initialLanguage: "it"
+    });
 
     act(() => {
       result.current.updateRating("pg-13");
@@ -49,9 +57,11 @@ describe("useForm", () => {
   });
 
   test("should update language", () => {
-    const { result } = renderHook(() =>
-      useForm({ initialKeyword: "", initialRating: "g", initialLanguage: "pt" })
-    );
+    const { result } = setup({
+      initialKeyword: "",
+      initialRating: "g",
+      initialLanguage: "pt"
+    });
 
     act(() => {
       result.current.updateLanguage("fr");
@@ -63,9 +73,11 @@ describe("useForm", () => {
   });
 
   test("should reset filters", () => {
-    const { result } = renderHook(() =>
-      useForm({ initialKeyword: "cats", initialRating: "pg", initialLanguage: "de" })
-    );
+    const { result } = setup({
+      initialKeyword: "cats",
+      initialRating: "pg",
+      initialLanguage: "de"
+    });
 
     act(() => {
       result.current.updateKeyword("dogs");
