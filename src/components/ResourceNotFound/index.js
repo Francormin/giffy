@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Link } from "wouter";
 import "./styles.css";
 
-const gifsErrors = [
+const ERROR_GIFS = [
   "d2jjuAZzDSVLZ5kI",
   "Bp3dFfoqpCKFyXuSzP",
   "hv5AEBpH3ZyNoRnABG",
@@ -11,19 +11,18 @@ const gifsErrors = [
 
 const ResourceNotFound = () => {
   const randomGifId = useMemo(
-    () => gifsErrors[Math.floor(Math.random() * gifsErrors.length)],
+    () => ERROR_GIFS[Math.floor(Math.random() * ERROR_GIFS.length)],
     []
   );
+
+  const gifUrl = `https://media.giphy.com/media/${randomGifId}/giphy.gif`;
 
   return (
     <div className="ResourceNotFound-container">
       <span className="code-error-text">404</span>
       <span className="msg-error-text">Sometimes getting lost isn&apos;t that bad</span>
-      <img
-        className="gif-error"
-        src={`https://media.giphy.com/media/${randomGifId}/giphy.gif`}
-        alt="Resource not found"
-      />
+      <img className="gif-error" src={gifUrl} alt="Resource not found" />
+
       <Link className="link-back-home" href="/">
         Go back home
       </Link>
