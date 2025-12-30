@@ -9,20 +9,20 @@
 }
 
 .code-error-text {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
   font-style: italic;
 }
 
 .msg-error-text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 1rem auto;
 }
 
 .gif-error {
   margin: 1rem auto;
-  width: 350px;
-  height: 350px;
+  width: 240px;
+  height: 240px;
   object-fit: contain;
 }
 
@@ -30,12 +30,61 @@
   display: inline-block;
   color: var(--primary-font-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.95rem;
   margin: 1rem auto;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+  transition: border 0.2s ease, transform 0.2s ease;
 }
 
-.link-back-home:hover {
-  border: 0.5px solid var(--primary-font-color);
+@media (hover: hover) {
+  .link-back-home:hover {
+    border: 1px solid var(--primary-font-color);
+    transform: translateY(-2px);
+  }
+}
+
+@media (min-width: 600px) {
+  .code-error-text {
+    font-size: 3rem;
+  }
+
+  .msg-error-text {
+    font-size: 1.3rem;
+    max-width: 70%;
+  }
+
+  .gif-error {
+    width: 300px;
+    height: 300px;
+  }
+
+  .link-back-home {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ResourceNotFound-container {
+    padding: 3rem;
+  }
+
+  .code-error-text {
+    font-size: 4rem;
+  }
+
+  .msg-error-text {
+    font-size: 1.5rem;
+    max-width: 600px;
+  }
+
+  .gif-error {
+    width: 380px;
+    height: 380px;
+  }
+
+  .link-back-home {
+    font-size: 1.1rem;
+  }
 }
