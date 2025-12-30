@@ -1,11 +1,41 @@
 .ResourceNotFound-container {
-  margin: 0 auto;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--secondary-font-color);
 }
 
-.ResourceNotFound-container img {
-  width: 330px;
-  height: 410px;
-  background-color: var(--secondary-font-color);
-  border-radius: 15px;
+.code-error-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.msg-error-text {
+  font-size: 1.2rem;
+  margin: 1rem auto;
+}
+
+.gif-error {
+  margin: 1rem auto;
+  width: 350px;
+  height: 350px;
+  object-fit: contain;
+}
+
+.link-back-home {
+  display: inline-block;
+  color: var(--primary-font-color);
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.link-back-home:hover {
+  border: 0.5px solid var(--primary-font-color);
 }

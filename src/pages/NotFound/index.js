@@ -1,7 +1,18 @@
+import { Helmet } from "react-helmet";
+import SearchForm from "components/SearchForm";
 import ResourceNotFound from "components/ResourceNotFound";
 
 const NotFound = () => {
-  return <ResourceNotFound />;
+  return (
+    <>
+      <Helmet>
+        <title>Error 404 | Giffy</title>
+        <meta name="description" content="Page not found - Giffy" />
+      </Helmet>
+      <SearchForm />
+      <ResourceNotFound />
+    </>
+  );
 };
 
 export default NotFound;
