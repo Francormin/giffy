@@ -1,0 +1,171 @@
+/* ==========================================================
+   LOGIN – Layout general (mobile-first)
+   ========================================================== */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+}
+
+/* ==========================================================
+   LOGIN – Estado de carga (loading)
+   Feedback visual suave mientras se valida el login
+   ========================================================== */
+
+.login-loading {
+  font-size: 0.95rem;
+  color: var(--secondary-font-color);
+  margin-bottom: 1rem;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* Animación simple para indicar actividad sin spinner */
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* ==========================================================
+   LOGIN – Formulario
+   ========================================================== */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  /* Dimensiones y espaciado */
+  max-width: 320px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+
+  /* Estética */
+  border-radius: 8px;
+  background-color: var(--secondary-font-color);
+  box-shadow: 0 4px 10px var(--primary-background-color);
+}
+
+/* ==========================================================
+   LOGIN – Inputs y botón (estilos base)
+   ========================================================== */
+
+.login-form input,
+.login-form button {
+  font-size: 1rem;
+}
+
+/* Inputs */
+
+.login-form input {
+  padding: 0.6rem 0.75rem;
+  color: var(--primary-background-color);
+  border: 1px solid var(--secondary-font-color);
+  border-radius: 4px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--secondary-background-color);
+}
+
+/* Botón */
+
+.login-form button {
+  padding: 0.65rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-font-color);
+  cursor: pointer;
+
+  /* Transición solo de transform (hover desktop) */
+  transition: transform 0.15s ease;
+}
+
+.login-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================================
+   LOGIN – Estado de error
+   Mensaje visible pero no agresivo
+   ========================================================== */
+
+.login-error {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #b00020;
+  background-color: rgba(176, 0, 32, 0.08);
+  border-radius: 8px;
+  text-align: center;
+
+  /* Animación */
+  animation: errorFadeIn 0.3s ease-out;
+}
+
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   INTERACCIONES – Solo dispositivos con hover real
+   (desktop / mouse / trackpad)
+   ========================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .login-form input:hover {
+    border-color: #999;
+  }
+
+  .login-form button:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ==========================================================
+   TABLET – Ajustes visuales
+   ========================================================== */
+
+@media (min-width: 768px) {
+  .login-container {
+    padding-top: 3rem;
+  }
+
+  .login-form {
+    max-width: 420px;
+    padding: 2rem;
+  }
+
+  .login-loading,
+  .login-error {
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================
+   DESKTOP – Formularios más amplios y cómodos
+   ========================================================== */
+
+@media (min-width: 1024px) {
+  .login-form {
+    max-width: 520px;
+    padding: 2.25rem;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 1.05rem;
+  }
+}
