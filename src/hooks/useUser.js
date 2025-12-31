@@ -8,7 +8,7 @@ const useUser = () => {
     error: false
   });
 
-  const { user, setUser } = useContext(UserContext);
+  const { jwt, setJwt } = useContext(UserContext);
 
   const login = useCallback(
     ({ username, password }) => {
@@ -16,17 +16,17 @@ const useUser = () => {
       loginService({ username, password })
         .then(jwt => {
           setLoginState({ loading: false, error: false });
-          setUser(jwt);
+          setJwt(jwt);
         })
         .catch(() => setLoginState({ loading: false, error: true }));
     },
-    [setUser]
+    [setJwt]
   );
 
-  const logout = useCallback(() => setUser(null), [setUser]);
+  const logout = useCallback(() => setJwt(null), [setJwt]);
 
   return {
-    isLogged: Boolean(user),
+    isLogged: Boolean(jwt),
     login,
     loginIsLoading: loginState.loading,
     loginHasError: loginState.error,
