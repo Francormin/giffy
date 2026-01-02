@@ -1,7 +1,7 @@
 .Header-component {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .Header-component button, a {

@@ -13,11 +13,14 @@
 }
 
 .App-logo {
-  margin: 0 auto; /* Centra horizontalmente si el elemento es block */
+  margin: 20px auto; /* Centra horizontalmente si el elemento es block */
   width: 250px; /* Tamaño base fijo */
-  max-width: 80%; /* Se reduce proporcionalmente en pantallas chicas */
   height: auto; /* Mantiene la proporción original */
   cursor: pointer; /* Muestra cursor de mano */
+}
+
+.App-logo.pulse {
+  animation: logoPulse 2s infinite ease-in-out;
 }
 
 @keyframes logoPulse {
@@ -28,10 +31,6 @@
   50% {
     transform: scale(1.04);
   }
-}
-
-.App-logo.pulse {
-  animation: logoPulse 2s infinite ease-in-out;
 }
 
 .App-logo-link:hover .App-logo.pulse {
