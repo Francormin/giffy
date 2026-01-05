@@ -9,7 +9,9 @@ const NotFound = () => {
         <title>Error 404 | Giffy</title>
         <meta name="description" content="Page not found - Giffy" />
       </Helmet>
+
       <SearchForm />
+
       <ResourceNotFound />
     </>
   );

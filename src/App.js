@@ -24,25 +24,33 @@ const App = () => {
       <div className="App">
         <section className="App-content">
           <Header />
+
           <Link to="/" className="App-logo-link">
             <img className="App-logo pulse" src="/giffy_logo.png" alt="giffy logo" />
           </Link>
+
           <GifsContextProvider>
             <ScrollToTop />
+
             <Switch>
               <Route path="/">
                 <Suspense fallback={<Spinner />}>
                   <HomePage />
                 </Suspense>
               </Route>
+
               <Route path="/login">
                 <Suspense fallback={<Spinner />}>
                   <LoginPage />
                 </Suspense>
               </Route>
+
               <Route path="/search/:keyword/:rating?/:language?" component={SearchResults} />
+
               <Route path="/gif/:id" component={Detail} />
+
               <Route path="/404" component={NotFound} />
+
               <Route component={NotFound} />
             </Switch>
           </GifsContextProvider>

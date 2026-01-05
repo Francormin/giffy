@@ -17,10 +17,12 @@ const Home = () => {
         <title>Home | Giffy</title>
         <meta name="description" content="Giffy is a platform for discovering and sharing GIFs." />
       </Helmet>
+
       <div className="Home-container">
         <SearchForm />
 
         <h3>Last search</h3>
+
         <ListOfGifs gifs={first15Gifs} />
 
         <TrendingSearches />

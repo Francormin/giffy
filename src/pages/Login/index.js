@@ -1,8 +1,8 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useLocation } from "wouter";
 import useUser from "hooks/useUser";
 import LoginForm from "components/LoginForm";
-import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [, navigate] = useLocation();
@@ -18,6 +18,7 @@ const Login = () => {
         <title>Login | Giffy</title>
         <meta name="description" content="Login to your Giffy account" />
       </Helmet>
+
       <LoginForm
         login={login}
         loading={loginIsLoading}

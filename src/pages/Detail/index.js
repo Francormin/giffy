@@ -1,5 +1,5 @@
-import { Redirect } from "wouter";
 import { Helmet } from "react-helmet";
+import { Redirect } from "wouter";
 import useSingleGif from "hooks/useSingleGif";
 import GifDetails from "components/GifDetails";
 import Spinner from "components/Spinner";
@@ -25,6 +25,7 @@ const Detail = ({ params }) => {
           content={`View the detail of GIF titled "${gif.title}" on Giffy.`}
         />
       </Helmet>
+
       <GifDetails gif={gif} />
     </>
   ) : (

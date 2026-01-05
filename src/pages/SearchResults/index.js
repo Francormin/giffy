@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
-import { Redirect } from "wouter";
 import { Helmet } from "react-helmet";
+import { Redirect } from "wouter";
 import debounce from "just-debounce-it";
 import useGifs from "hooks/useGifs";
 import useNearScreen from "hooks/useNearScreen";
@@ -36,11 +36,20 @@ const SearchResults = ({ params }) => {
           content={`Discover ${gifs.length} GIFs about ${decodeURIComponent(keyword)} on Giffy.`}
         />
       </Helmet>
+
       <div className="SearchResults-container">
-        <SearchForm initialKeyword={keyword} initialRating={rating} initialLanguage={language} />
+        <SearchForm
+          initialKeyword={keyword}
+          initialRating={rating}
+          initialLanguage={language}
+        />
+
         <h5>results for: {decodeURIComponent(keyword)}</h5>
+
         <ListOfGifs gifs={gifs} />
+
         <div id="visor" ref={externalRef}></div>
+
         {isLoading && <Spinner />}
       </div>
     </>
