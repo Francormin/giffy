@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import useGlobalGifs from "hooks/useGlobalGifs";
 import useGifs from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";

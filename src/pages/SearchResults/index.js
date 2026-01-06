@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Redirect } from "wouter";
 import useGifs from "hooks/useGifs";
 import useInfiniteScroll from "hooks/useInfiniteScroll";

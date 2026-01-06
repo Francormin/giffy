@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Redirect } from "wouter";
 import useSingleGif from "hooks/useSingleGif";
 import GifDetails from "components/GifDetails";
