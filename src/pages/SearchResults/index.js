@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Redirect } from "wouter";
 import debounce from "just-debounce-it";
@@ -10,7 +10,19 @@ import SearchForm from "components/SearchForm";
 
 const SearchResults = ({ params }) => {
   const { keyword, rating = "g", language = "en" } = params;
-  const { gifs, isLoading, isResultEmpty, setPage } = useGifs({ keyword, rating, language });
+
+  const { gifs, isLoading, isResultEmpty, page, setPage } = useGifs({
+    keyword,
+    rating,
+    language
+  });
+
+  const debounceHandleNextPage = useRef(
+    debounce(() => {
+      setPage(prev => prev + 1)
+    }, 500)
+  ).current;
+
   const externalRef = useRef();
 
   const { show } = useNearScreen({
@@ -18,14 +30,10 @@ const SearchResults = ({ params }) => {
     once: false
   });
 
-  const debounceHandleNextPage = useCallback(
-    debounce(() => setPage(prevPage => prevPage + 1), 500),
-    [setPage]
-  );
-
   useEffect(() => {
-    if (show) debounceHandleNextPage();
-  }, [show, debounceHandleNextPage]);
+    if (!show || isLoading) return;
+    debounceHandleNextPage();
+  }, [show, isLoading, page, debounceHandleNextPage]);
 
   return !isResultEmpty ? (
     <>
