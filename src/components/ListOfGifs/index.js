@@ -5,7 +5,7 @@ const ListOfGifs = ({ gifs }) => (
   <div className="ListOfGifs-grid">
     {gifs?.map(({ id, title, url, ...restOfGif }) => (
       <Gif
-        key={id}
+        key={url}
         id={id}
         title={title}
         url={url}

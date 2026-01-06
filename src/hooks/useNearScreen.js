@@ -5,7 +5,9 @@ const useNearScreen = ({ distance = "100px", externalRef, once = true } = {}) =>
   const elementRef = useRef();
 
   useEffect(() => {
-    const element = externalRef ? externalRef.current : elementRef.current;    
+    const element = externalRef
+      ? externalRef.current
+      : elementRef.current;
 
     const onChange = (entries, observer) => {
       const isIntersecting = entries[0].isIntersecting;

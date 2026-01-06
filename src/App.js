@@ -26,7 +26,11 @@ const App = () => {
           <Header />
 
           <Link to="/" className="App-logo-link">
-            <img className="App-logo pulse" src="/giffy_logo.png" alt="giffy logo" />
+            <img
+              className="App-logo pulse"
+              src="/giffy_logo.png"
+              alt="giffy logo"
+            />
           </Link>
 
           <GifsContextProvider>
@@ -45,13 +49,24 @@ const App = () => {
                 </Suspense>
               </Route>
 
-              <Route path="/search/:keyword/:rating?/:language?" component={SearchResults} />
+              <Route
+                path="/search/:keyword/:rating?/:language?"
+                component={SearchResults}
+              />
 
-              <Route path="/gif/:id" component={Detail} />
+              <Route
+                path="/gif/:id"
+                component={Detail}
+              />
 
-              <Route path="/404" component={NotFound} />
+              <Route
+                path="/404"
+                component={NotFound}
+              />
 
-              <Route component={NotFound} />
+              <Route
+                component={NotFound}
+              />
             </Switch>
           </GifsContextProvider>
         </section>
