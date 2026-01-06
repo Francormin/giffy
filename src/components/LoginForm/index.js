@@ -22,12 +22,14 @@ const LoginForm = ({ login, loading, error }) => {
             onChange={e => setUsername(e.target.value)}
             placeholder="Username"
           />
+
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder="Password"
           />
+
           <button type="submit" disabled={!username || !password}>
             Login
           </button>

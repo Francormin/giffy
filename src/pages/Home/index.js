@@ -15,7 +15,10 @@ const Home = () => {
     <>
       <Helmet>
         <title>Home | Giffy</title>
-        <meta name="description" content="Giffy is a platform for discovering and sharing GIFs." />
+        <meta
+          name="description"
+          content="Giffy is a platform for discovering and sharing GIFs."
+        />
       </Helmet>
 
       <div className="Home-container">

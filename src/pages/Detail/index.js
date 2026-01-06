@@ -6,17 +6,23 @@ import Spinner from "components/Spinner";
 
 const Detail = ({ params }) => {
   const { id } = params;
-  const { gif, isLoading, isError } = useSingleGif(id);
+  const { gif, isLoading } = useSingleGif(id);
 
-  return isLoading ? (
-    <>
-      <Helmet>
-        <title>Loading...</title>
-        <meta name="description" content="Loading..." />
-      </Helmet>
-      <Spinner />
-    </>
-  ) : gif ? (
+  if (isLoading) {
+    return (
+      <>
+        <Helmet>
+          <title>Loading...</title>
+          <meta name="description" content="Loading..." />
+        </Helmet>
+        <Spinner />
+      </>
+    );
+  }
+
+  if (!gif) return <Redirect to="/404" />;
+
+  return (
     <>
       <Helmet>
         <title>{gif.title} | Giffy</title>
@@ -28,8 +34,6 @@ const Detail = ({ params }) => {
 
       <GifDetails gif={gif} />
     </>
-  ) : (
-    <Redirect to="/404" />
   );
 };
 

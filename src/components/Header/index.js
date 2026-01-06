@@ -7,13 +7,9 @@ const Header = () => {
 
   return (
     <div className="Header-component">
-      {
-        isLogged ? (
-          <button onClick={logout}>Logout</button>
-        ) : (
-          <Link to="/login">Login</Link>
-        )
-      }
+      {isLogged
+        ? <button onClick={logout}>Logout</button>
+        : <Link to="/login">Login</Link>}
     </div>
   );
 };

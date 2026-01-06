@@ -1,12 +1,13 @@
-const { useEffect } = require("react");
-const { useLocation } = require("wouter");
+import { useEffect } from "react";
+import { useLocation } from "wouter";
 
 const ScrollToTop = () => {
   const [location] = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [location]);
+  useEffect(
+    () => window.scrollTo({ top: 0, behavior: "smooth" }),
+    [location]
+  );
 
   return null;
 };

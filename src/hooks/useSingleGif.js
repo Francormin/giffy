@@ -3,12 +3,12 @@ import useGlobalGifs from "hooks/useGlobalGifs";
 import getSingleGif from "services/getSingleGif";
 
 const useSingleGif = id => {
-  const { gifs } = useGlobalGifs();
-  const gifFromCache = gifs?.find(singleGif => singleGif.id === id);
-
-  const [gif, setGif] = useState(gifFromCache);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  
+  const { gifs } = useGlobalGifs();  
+  const gifFromCache = gifs?.find(singleGif => singleGif.id === id);
+  const [gif, setGif] = useState(gifFromCache);
 
   useEffect(() => {
     if (!gif) {

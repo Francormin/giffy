@@ -12,7 +12,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
       initialLanguage
     });
 
-  const [path, pushLocation] = useLocation();
+  const [, navigate] = useLocation();
 
   const handleChange = event => {
     updateKeyword(event.target.value);
@@ -20,7 +20,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
 
   const handleSubmit = event => {
     event.preventDefault();
-    pushLocation(`/search/${keyword}/${rating}/${language}`);
+    navigate(`/search/${keyword}/${rating}/${language}`);
   };
 
   const handleChangeRating = event => {
@@ -44,6 +44,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           value={keyword}
           onChange={handleChange}
         />
+
         <button type="submit" disabled={!keyword.length}>
           Search
         </button>
@@ -54,6 +55,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           <option disabled value="">
             Rating
           </option>
+
           {Object.entries(RATINGS).map(([value, label]) => (
             <option key={value} value={value}>
               {label}
@@ -65,6 +67,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           <option disabled value="">
             Language
           </option>
+
           {Object.entries(LANGUAGES).map(([value, label]) => (
             <option key={value} value={value}>
               {label}
