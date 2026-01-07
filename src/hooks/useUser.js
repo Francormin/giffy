@@ -1,6 +1,7 @@
 import { useCallback, useContext, useState } from "react";
 import UserContext from "context/UserContext";
 import loginService from "services/login";
+import addFavService from "services/addFav";
 
 const useUser = () => {
   const [loginState, setLoginState] = useState({
@@ -8,7 +9,21 @@ const useUser = () => {
     error: false
   });
 
-  const { jwt, setJwt } = useContext(UserContext);
+  const { favs, jwt, setFavs, setJwt } = useContext(UserContext);
+
+  const checkIfGifIsFaved = useCallback(
+    ({ id }) => favs.some(favGifId => favGifId === id),
+    [favs]
+  );
+
+  const addFav = useCallback(
+    ({ id }) => {
+      addFavService({ id, jwt })
+        .then(setFavs)
+        .catch(err => console.error(err));
+    },
+    [jwt, setFavs]
+  );
 
   const login = useCallback(
     ({ username, password }) => {
@@ -26,6 +41,8 @@ const useUser = () => {
   const logout = useCallback(() => setJwt(null), [setJwt]);
 
   return {
+    checkIfGifIsFaved,
+    addFav,
     isLogged: Boolean(jwt),
     login,
     loginIsLoading: loginState.loading,
