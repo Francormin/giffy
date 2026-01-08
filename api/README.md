@@ -1,7 +1,56 @@
-# Api de Usuarios con Deno 🦕
+# API de Usuarios con Deno 🦕
 
-Para ejecutar en local esta API necesitas tener instada la última versión de Deno y ejecutar dentro de la carpeta `/api`:
+API REST sencilla construida con **Deno** y **Oak**, que permite:
 
-```js
-deno run --allow-net=:8080 --allow-read --allow-env server.ts --port=8080
+- Registro de usuarios
+- Login con JWT
+- Gestión de favoritos por usuario
+- Autenticación mediante middleware
+
+## Requisitos
+
+- **Deno** v2 o superior  
+  👉 https://deno.com/
+
+## Instalación
+
+Cloná el repositorio y ubicate en la carpeta del proyecto:
+
+```bash
+git clone <repo-url>
+cd api
 ```
+
+Creá un archivo .env en la raíz del proyecto con la clave usada para firmar los JWT:
+
+```env
+JWT_KEY=tu_clave_secreta
+```
+
+## Ejecutar el servidor
+
+Modo desarrollo:
+
+```bash
+deno task dev
+```
+
+Modo producción:
+
+```bash
+deno task start
+```
+
+El servidor se levanta por defecto en:
+
+```
+http://localhost:8080
+```
+
+## Endpoints principales
+
+- `POST /register` – Registro de usuario
+- `POST /login` – Login y obtención de JWT
+- `GET /favs` – Obtener favoritos (auth)
+- `POST /favs/:id` – Agregar favorito (auth)
+- `DELETE /favs/:id` – Eliminar favorito (auth)
