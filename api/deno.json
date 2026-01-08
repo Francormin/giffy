@@ -5,5 +5,12 @@
     "jsonwebtoken": "npm:jsonwebtoken@^9.0.2",
     "bcrypt": "npm:bcryptjs@^2.4.3",
     "dotenv": "npm:dotenv@^16.4.5"
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-env --allow-read=.env server.ts",
+    "start": "deno run --allow-net --allow-env --allow-read=.env server.ts",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "check": "deno check server.ts"
   }
 }
