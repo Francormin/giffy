@@ -17,7 +17,7 @@ API REST sencilla construida con **Deno** y **Oak**, que permite:
 Cloná el repositorio y ubicate en la carpeta del proyecto:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Francormin/giffy.git
 cd api
 ```
 
