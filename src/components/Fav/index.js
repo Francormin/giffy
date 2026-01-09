@@ -18,7 +18,7 @@ const Fav = ({ id }) => {
     ]
     : [
       "Add Gif to favorites",
-      "♥"
+      "❤️"
     ];
 
   return (
