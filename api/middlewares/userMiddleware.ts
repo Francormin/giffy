@@ -13,13 +13,13 @@ export const userMiddleware = async (ctx: Context<State>, next: () => Promise<un
     jwt = authHeader;
   }
 
-  if (!jwt && ctx.request.headers.get("content-type")?.includes("application/json")) {
+  if (!jwt && ctx.request.headers.get("Content-Type")?.includes("application/json")) {
     try {
       const body = ctx.request.body;
       const data = await body.json();
       jwt = data?.jwt ?? null;
     } catch (err) {
-      console.debug("Invalid JSON body", err);
+      console.debug("Invalid JSON body:", err);
     }
   }
 
@@ -28,8 +28,6 @@ export const userMiddleware = async (ctx: Context<State>, next: () => Promise<un
     await next();
     return;
   }
-
-  console.log("using:", { jwt });
 
   try {
     const payload = verify(jwt, Deno.env.get("JWT_KEY")!) as JwtPayload;

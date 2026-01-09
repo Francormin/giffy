@@ -20,12 +20,6 @@ export const deleteFav = (ctx: Ctx) => {
 
   favs[username] = favs[username].filter(favId => favId !== id);
 
-  console.log({
-    idRemoved: id,
-    remainingFavs: favs[username],
-    username
-  });
-
   ctx.response.status = 200;
   ctx.response.body = { favs: favs[username] };
 };
@@ -38,11 +32,6 @@ export const postFav = (ctx: Ctx) => {
     favs[username].push(id);
   }
 
-  console.log({
-    favs: favs[username],
-    username
-  });
-
   ctx.response.status = 201;
   ctx.response.body = { favs: favs[username] };
 };
@@ -54,7 +43,8 @@ export const postLogin = async (ctx: Ctx) => {
   const user = users.find(user => user.username === username);
 
   if (!user || !bcrypt.compareSync(password, user.password)) {
-    ctx.response.status = 403;
+    ctx.response.status = 401;
+    ctx.response.body = { msg: "invalid credentials" };
     return;
   }
 
@@ -74,6 +64,7 @@ export const postRegister = async (ctx: Ctx) => {
 
   if (users.some(user => user.username === username)) {
     ctx.response.status = 409;
+    ctx.response.body = { msg: "user already exists" };
     return;
   }
 
@@ -84,4 +75,5 @@ export const postRegister = async (ctx: Ctx) => {
 
   favs[username] = [];
   ctx.response.status = 201;
+  ctx.response.body = { msg: "user created successfully" };
 };
