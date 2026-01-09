@@ -1,7 +1,5 @@
-const ENDPOINT = "http://localhost:8000";
-
 const getFavs = ({ jwt }) => {
-  return fetch(`${ENDPOINT}/favs`, {
+  return fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs`, {
     method: "GET",
     headers: {
       "Authorization": jwt,

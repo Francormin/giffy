@@ -1,7 +1,5 @@
-const ENDPOINT = "http://localhost:8000";
-
 const login = ({ username, password }) => {
-  return fetch(`${ENDPOINT}/login`, {
+  return fetch(`${process.env.REACT_APP_API_ENDPOINT}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

@@ -1,7 +1,5 @@
-const ENDPOINT = "http://localhost:8000";
-
 const addFav = ({ id, jwt }) => {
-  return fetch(`${ENDPOINT}/favs/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs/${id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
