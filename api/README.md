@@ -29,13 +29,13 @@ JWT_KEY=tu_clave_secreta
 
 ## Ejecutar el servidor
 
-Modo desarrollo:
+### Modo desarrollo
 
 ```bash
 deno task dev
 ```
 
-Modo producción:
+### Modo producción
 
 ```bash
 deno task start
@@ -54,3 +54,9 @@ http://localhost:8080
 - `GET /favs` – Obtener favoritos (auth)
 - `POST /favs/:id` – Agregar favorito (auth)
 - `DELETE /favs/:id` – Eliminar favorito (auth)
+
+### Probar la API
+
+El proyecto incluye un archivo `requests.example.http` compatible con la extensión **REST Client** de VS Code.
+
+Copialo y renombralo a `requests.http` para usarlo localmente.
