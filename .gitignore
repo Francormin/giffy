@@ -18,10 +18,17 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# REST client files
 requests.http
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# deployment
 .vercel
+
+# optional deno cache
+.deno/
