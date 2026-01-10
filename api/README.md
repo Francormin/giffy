@@ -29,13 +29,13 @@ JWT_KEY=tu_clave_secreta
 
 ## Ejecutar el servidor
 
-### Modo desarrollo
+Modo desarrollo:
 
 ```bash
 deno task dev
 ```
 
-### Modo producción
+Modo producción:
 
 ```bash
 deno task start
@@ -43,7 +43,7 @@ deno task start
 
 El servidor se levanta por defecto en:
 
-```
+```arduino
 http://localhost:8080
 ```
 
