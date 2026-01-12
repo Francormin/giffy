@@ -25,7 +25,7 @@ const App = () => {
         <section className="App-content">
           <Header />
 
-          <Link to="/" className="App-logo-link">
+          <Link to="/">
             <img
               className="App-logo pulse"
               src="/giffy_logo.png"

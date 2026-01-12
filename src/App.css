@@ -5,18 +5,10 @@
   font-size: calc(10px + 2vmin);
 }
 
-.App-logo-link {
-  display: inline-block; /* Hace que el <a> se ajuste solo al tamaño del contenido */
-  margin: 0 auto; /* Intenta centrar horizontalmente (pero solo funciona si el padre es block y tiene text-align o flex) */
-  line-height: 0; /* Elimina espacio extra que los elementos inline-block suelen dejar por texto */
-  text-align: center;
-}
-
 .App-logo {
-  margin: 20px auto; /* Centra horizontalmente si el elemento es block */
-  width: 250px; /* Tamaño base fijo */
-  height: auto; /* Mantiene la proporción original */
-  cursor: pointer; /* Muestra cursor de mano */
+  margin: 0px auto;
+  width: 240px;
+  cursor: pointer;
 }
 
 .App-logo.pulse {
