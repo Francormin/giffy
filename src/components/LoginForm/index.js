@@ -16,14 +16,18 @@ const LoginForm = ({ login, loading, error }) => {
 
       {!loading && (
         <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
           <input
+            id="username"
             type="text"
             value={username}
             onChange={e => setUsername(e.target.value)}
             placeholder="Username"
           />
 
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}

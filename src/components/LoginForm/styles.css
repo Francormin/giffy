@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem 1rem;
+  justify-content: center;
 }
 
 /* ==========================================================
@@ -44,6 +44,7 @@
   gap: 0.75rem;
 
   /* Dimensiones y espaciado */
+  width: 100%;
   max-width: 320px;
   margin: 2rem auto;
   padding: 1.5rem;
@@ -55,12 +56,14 @@
 }
 
 /* ==========================================================
-   LOGIN – Inputs y botón (estilos base)
+   LOGIN – Labels, inputs y botón (estilos base)
    ========================================================== */
 
+.login-form label,
 .login-form input,
 .login-form button {
   font-size: 1rem;
+  display: block;
 }
 
 /* Inputs */
@@ -145,12 +148,8 @@
    ========================================================== */
 
 @media (min-width: 768px) {
-  .login-container {
-    padding-top: 3rem;
-  }
-
   .login-form {
-    max-width: 420px;
+    max-width: 400px;
     padding: 2rem;
   }
 
@@ -166,7 +165,7 @@
 
 @media (min-width: 1024px) {
   .login-form {
-    max-width: 520px;
+    max-width: 500px;
     padding: 2.25rem;
   }
 
