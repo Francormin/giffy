@@ -30,7 +30,7 @@
 }
 
 .SearchForm-main input:focus {
-  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.35);
+  box-shadow: 0 0 0 2px var(--secondary-background-color);
 }
 
 .SearchForm-main button {
@@ -57,6 +57,7 @@
   border-radius: 10px;
   font-size: 13px;
   border: none;
+  outline: none;
   color: var(--primary-background-color);
   background-color: var(--secondary-font-color);
 }
@@ -65,10 +66,11 @@
   padding: 10px 12px;
   border-radius: 10px;
   font-size: 13px;
-  background: transparent;
-  color: var(--secondary-background-color);
-  border: 1px solid var(--secondary-background-color);
   cursor: pointer;
+  background-color: var(--primary-background-color);
+  color: var(--primary-font-color);
+  border: 1px solid var(--primary-font-color);
+  transition: background-color 0.15 ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 /* ---------- ESTADOS ---------- */
@@ -78,15 +80,19 @@
   cursor: not-allowed;
 }
 
-.SearchForm select:focus,
-.SearchForm button:focus {
-  outline: 2px solid rgba(100, 100, 255, 0.35);
-  outline-offset: 2px;
+.SearchForm select:focus {
+  outline: 2px solid var(--secondary-background-color);
 }
 
 @media (hover: hover) {
-  .SearchForm button:hover:not(:disabled) {
-    filter: brightness(1.08);
+  .SearchForm-main button:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+
+  .SearchForm-filters button:hover:not(:disabled) {
+    background-color: var(--primary-font-color);
+    color: var(--primary-background-color);
+    border-color: var(--primary-background-color);
   }
 }
 
