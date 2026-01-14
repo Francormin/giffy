@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.login-container h1 {
+  color: var(--secondary-font-color);
+}
+
 /* ==========================================================
    LOGIN – Estado de carga (loading)
    Feedback visual suave mientras se valida el login
@@ -46,8 +50,8 @@
   /* Dimensiones y espaciado */
   width: 100%;
   max-width: 320px;
-  margin: 2rem auto;
-  padding: 1.5rem;
+  margin: 0 auto;
+  padding: 1rem;
 
   /* Estética */
   border-radius: 8px;
@@ -149,8 +153,8 @@
 
 @media (min-width: 768px) {
   .login-form {
-    max-width: 380px;
-    padding: 2rem;
+    max-width: 360px;
+    padding: 1.2rem;
   }
 
   .login-loading,
@@ -165,8 +169,8 @@
 
 @media (min-width: 1024px) {
   .login-form {
-    max-width: 480px;
-    padding: 2.25rem;
+    max-width: 420px;
+    padding: 1.5rem;
   }
 
   .login-form input,

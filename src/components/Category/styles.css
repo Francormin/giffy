@@ -1,9 +1,12 @@
+.category-container {
+  padding: 1rem 0;
+}
+
 .category-list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 20px;
 }
 
 /* Item base */
