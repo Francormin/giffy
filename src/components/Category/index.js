@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Category = ({ name, options }) => {
   return (
-    <div className="Category-container">
+    <div className="category-container">
       <h3>{name}</h3>
       <div className="category-list-container">
         {options.map(option => (
