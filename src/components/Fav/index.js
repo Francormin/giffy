@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import useUser from "hooks/useUser";
 import Modal from "components/Modal";
 import LoginForm from "components/LoginForm";
@@ -6,24 +6,29 @@ import "./styles.css";
 
 const Fav = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
-  const { isLogged, checkIfGifIsFaved, addFav } = useUser();
+  const {
+    isLogged,
+    login,
+    loginIsLoading,
+    loginHasError,
+    clearLoginError,
+    checkIfGifIsFaved,
+    addFav
+  } = useUser();
 
-  const [label, emoji] = checkIfGifIsFaved({ id })
-    ? [
-      "Remove Gif from favorites",
-      "❌"
-    ]
-    : [
-      "Add Gif to favorites",
-      "❤️"
-    ];
+  const isFaved = checkIfGifIsFaved(id);
+  const label = isFaved ? "Remove Gif from favorites" : "Add Gif to favorites";
+  const emoji = isFaved ? "❌" : "❤️";
 
   const handleFavGif = () => {
     if (!isLogged) return setShowModal(true);
-    addFav({ id });
+    addFav(id);
   };
 
-  const handleClose = useCallback(() => setShowModal(false), []);
+  const handleClose = () => {
+    clearLoginError();
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -35,7 +40,11 @@ const Fav = ({ id }) => {
 
       {showModal && (
         <Modal onClose={handleClose}>
-          <LoginForm />
+          <LoginForm
+            login={login}
+            loading={loginIsLoading}
+            error={loginHasError}
+          />
         </Modal>
       )}
     </>

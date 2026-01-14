@@ -11,19 +11,12 @@ const useUser = () => {
 
   const { favs, jwt, setFavs, setJwt } = useContext(UserContext);
 
-  const checkIfGifIsFaved = useCallback(
-    ({ id }) => favs.some(favGifId => favGifId === id),
-    [favs]
-  );
+  const checkIfGifIsFaved = id => favs.some(favGifId => favGifId === id);
 
-  const addFav = useCallback(
-    ({ id }) => {
-      addFavService({ id, jwt })
-        .then(setFavs)
-        .catch(err => console.error(err));
-    },
-    [jwt, setFavs]
-  );
+  const addFav = id =>
+    addFavService({ id, jwt })
+      .then(setFavs)
+      .catch(err => console.error(err));
 
   const login = useCallback(
     ({ username, password }) => {
@@ -38,7 +31,13 @@ const useUser = () => {
     [setJwt]
   );
 
-  const logout = useCallback(() => setJwt(null), [setJwt]);
+  const clearLoginError = () =>
+    setLoginState(prevState => ({
+      ...prevState,
+      error: false
+    }));
+
+  const logout = () => setJwt(null);
 
   return {
     checkIfGifIsFaved,
@@ -47,6 +46,7 @@ const useUser = () => {
     login,
     loginIsLoading: loginState.loading,
     loginHasError: loginState.error,
+    clearLoginError,
     logout
   };
 };
