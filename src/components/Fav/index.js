@@ -1,15 +1,12 @@
-import { useLocation } from "wouter";
+import { useCallback, useState } from "react";
 import useUser from "hooks/useUser";
+import Modal from "components/Modal";
+import LoginForm from "components/LoginForm";
 import "./styles.css";
 
 const Fav = ({ id }) => {
-  const [, navigate] = useLocation();
+  const [showModal, setShowModal] = useState(false);
   const { isLogged, checkIfGifIsFaved, addFav } = useUser();
-
-  const handleFavGif = () => {
-    if (!isLogged) return navigate("/login");
-    addFav({ id });
-  };
 
   const [label, emoji] = checkIfGifIsFaved({ id })
     ? [
@@ -21,12 +18,27 @@ const Fav = ({ id }) => {
       "❤️"
     ];
 
+  const handleFavGif = () => {
+    if (!isLogged) return setShowModal(true);
+    addFav({ id });
+  };
+
+  const handleClose = useCallback(() => setShowModal(false), []);
+
   return (
-    <button className="fav-button" onClick={handleFavGif}>
-      <span aria-label={label} role="img">
-        {emoji}
-      </span>
-    </button>
+    <>
+      <button className="fav-button" onClick={handleFavGif}>
+        <span aria-label={label} role="img">
+          {emoji}
+        </span>
+      </button>
+
+      {showModal && (
+        <Modal onClose={handleClose}>
+          <LoginForm />
+        </Modal>
+      )}
+    </>
   );
 };
 
