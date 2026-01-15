@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useUser from "hooks/useUser";
 import Modal from "components/Modal";
 import LoginForm from "components/LoginForm";
@@ -6,6 +6,7 @@ import "./styles.css";
 
 const Fav = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
+
   const {
     isLogged,
     login,
@@ -25,10 +26,14 @@ const Fav = ({ id }) => {
     addFav(id);
   };
 
-  const handleClose = () => {
+  const handleCloseModal = () => {
     clearLoginError();
     setShowModal(false);
   };
+
+  useEffect(() => {
+    if (isLogged && showModal) setShowModal(false);
+  }, [isLogged, showModal]);
 
   return (
     <>
@@ -39,7 +44,7 @@ const Fav = ({ id }) => {
       </button>
 
       {showModal && (
-        <Modal onClose={handleClose}>
+        <Modal onClose={handleCloseModal}>
           <LoginForm
             login={login}
             loading={loginIsLoading}
