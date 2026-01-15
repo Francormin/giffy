@@ -9,8 +9,10 @@ import SearchForm from "components/SearchForm";
 const SearchResults = ({ params }) => {
   const { keyword, rating = "g", language = "en" } = params;
 
+  const decodedKeyword = keyword && decodeURIComponent(keyword);
+
   const { gifs, isLoading, isResultEmpty, setPage } = useGifs({
-    keyword,
+    keyword: decodedKeyword,
     rating,
     language
   });
@@ -25,21 +27,21 @@ const SearchResults = ({ params }) => {
   return (
     <>
       <Helmet>
-        <title>{`Search results for ${decodeURIComponent(keyword)} | Giffy`}</title>
+        <title>{`Search results for ${decodedKeyword} | Giffy`}</title>
         <meta
           name="description"
-          content={`Discover ${gifs.length} GIFs about ${decodeURIComponent(keyword)} on Giffy.`}
+          content={`Discover ${gifs.length} GIFs about ${decodedKeyword} on Giffy.`}
         />
       </Helmet>
 
       <div className="SearchResults-container">
         <SearchForm
-          initialKeyword={keyword}
+          initialKeyword={decodedKeyword}
           initialRating={rating}
           initialLanguage={language}
         />
 
-        <h5>results for: {decodeURIComponent(keyword)}</h5>
+        <h5>results for: {decodedKeyword}</h5>
 
         <ListOfGifs gifs={gifs} />
 

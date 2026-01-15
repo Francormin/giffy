@@ -8,7 +8,7 @@ const useForm = ({
   initialLanguage = DEFAULT_FILTERS.language
 } = {}) => {
   const [state, dispatch] = useReducer(formReducer, {
-    keyword: decodeURIComponent(initialKeyword),
+    keyword: initialKeyword,
     rating: initialRating,
     language: initialLanguage
   });
