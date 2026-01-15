@@ -78,7 +78,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
         <button
           type="button"
           disabled={!keyword.length && rating === "g" && language === "en"}
-          onClick={() => handleResetFilters()}
+          onClick={handleResetFilters}
         >
           Reset Filters
         </button>
@@ -87,4 +87,4 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
   );
 };
 
-export default React.memo(SearchForm);
+export default SearchForm;
