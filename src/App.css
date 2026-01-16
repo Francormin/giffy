@@ -33,11 +33,9 @@
 }
 
 .Home-container h3 {
-  color: var(--secondary-font-color);
   text-decoration: underline;
 }
 
 .SearchResults-container {
-  color: var(--secondary-font-color);
   padding: 0px 20px;
 }

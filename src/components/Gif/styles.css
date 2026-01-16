@@ -26,8 +26,7 @@
   height: 100%;
 }
 
-.Gif-link h4 {
-  font-size: 12px;
+.Gif-link h6 {
   background: rgba(0, 0, 0, 0.837);
   position: absolute;
   bottom: 0;
@@ -37,13 +36,13 @@
 }
 
 @media (hover: hover) {
-  .Gif-link h4 {
+  .Gif-link h6 {
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.15s ease, transform 0.15s ease;
   }
 
-  .Gif-card:hover h4 {
+  .Gif-card:hover h6 {
     opacity: 1;
     transform: translateY(0);
   }

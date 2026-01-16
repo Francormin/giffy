@@ -9,10 +9,6 @@
   justify-content: center;
 }
 
-.login-container h1 {
-  color: var(--secondary-font-color);
-}
-
 /* ==========================================================
    LOGIN – Estado de carga (loading)
    Feedback visual suave mientras se valida el login
@@ -68,6 +64,12 @@
 .login-form button {
   font-size: 1rem;
   display: block;
+}
+
+/* Labels */
+
+.login-form label {
+  color: var(--primary-background-color);
 }
 
 /* Inputs */
