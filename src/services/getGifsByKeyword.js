@@ -1,6 +1,12 @@
 import { fromApiResponseToGifs } from "utils";
 
-const getGifsByKeyword = ({ limit = 15, keyword, rating = "g", language = "en", page = 0 } = {}) => {
+const getGifsByKeyword = ({
+  limit = 15,
+  keyword,
+  rating = "g",
+  language = "en",
+  page = 0
+} = {}) => {
   const params = `/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=${rating}&lang=${language}`;
 
   const apiUrl = `${process.env.REACT_APP_GIPHY_BASE_URL}${params}`;

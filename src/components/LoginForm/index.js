@@ -12,7 +12,6 @@ const LoginForm = ({ login, loading, error }) => {
 
   return (
     <div className="login-container">
-
       <h1>Login</h1>
 
       {loading && <p className="login-loading">Checking credentials...</p>}

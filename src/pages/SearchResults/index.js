@@ -41,7 +41,7 @@ const SearchResults = ({ params }) => {
           initialLanguage={language}
         />
 
-        <h5>results for: {decodedKeyword}</h5>
+        <h3>results for: {decodedKeyword}</h3>
 
         <ListOfGifs gifs={gifs} />
 

@@ -4,7 +4,7 @@ import "./styles.css";
 const Category = ({ name, options }) => {
   return (
     <div className="category-container">
-      <h3>{name}</h3>
+      <h2>{name}</h2>
       <div className="category-list-container">
         {options.map(option => (
           <Link to={`/search/${option}`} key={option} className="category-item">

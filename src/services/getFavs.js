@@ -2,7 +2,7 @@ const getFavs = ({ jwt }) => {
   return fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs`, {
     method: "GET",
     headers: {
-      "Authorization": jwt,
+      Authorization: jwt,
       "Content-Type": "application/json"
     }
   })

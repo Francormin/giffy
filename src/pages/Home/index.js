@@ -24,7 +24,7 @@ const Home = () => {
       <div className="Home-container">
         <SearchForm />
 
-        <h3>Last search</h3>
+        <h2>Last search</h2>
 
         <ListOfGifs gifs={first15Gifs} />
 
