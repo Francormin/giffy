@@ -4,7 +4,8 @@ import "./styles.css";
 
 const Header = () => {
   const [, navigate] = useLocation();
-  const [match] = useRoute("/login");
+  const [matchLogin] = useRoute("/login");
+  const [matchRegister] = useRoute("/register");
   const { isLogged, logout } = useUser();
 
   const handleLogout = () => {
@@ -12,16 +13,27 @@ const Header = () => {
     navigate("/login");
   };
 
-  const renderLogButtons = () =>
-    isLogged
-      ? <button onClick={handleLogout}>Logout</button>
-      : <Link to="/login">Login</Link>;
-
-  const content = match ? null : renderLogButtons();
+  let headerOptions;
+  if (isLogged) {
+    headerOptions = <button onClick={handleLogout}>Logout</button>;
+  } else {
+    if (matchLogin) {
+      headerOptions = <Link to="/register">Register</Link>;
+    } else if (matchRegister) {
+      headerOptions = <Link to="/login">Login</Link>;
+    } else {
+      headerOptions = (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      );
+    }
+  }
 
   return (
     <div className="Header-component">
-      {content}
+      {headerOptions}
     </div>
   );
 };
