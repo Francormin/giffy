@@ -17,6 +17,7 @@ import "theme.css";
 
 const HomePage = React.lazy(() => import("pages/Home"));
 const LoginPage = React.lazy(() => import("pages/Login"));
+const RegisterPage = React.lazy(() => import("pages/Register"));
 
 const App = () => {
   return (
@@ -46,6 +47,12 @@ const App = () => {
               <Route path="/login">
                 <Suspense fallback={<Spinner />}>
                   <LoginPage />
+                </Suspense>
+              </Route>
+
+              <Route path="/register">
+                <Suspense fallback={<Spinner />}>
+                  <RegisterPage />
                 </Suspense>
               </Route>
 
