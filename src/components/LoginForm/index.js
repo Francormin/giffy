@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/auth.css";
 import "./styles.css";
 
 const LoginForm = ({ login, loading, error }) => {
@@ -11,13 +12,13 @@ const LoginForm = ({ login, loading, error }) => {
   };
 
   return (
-    <div className="login-container">
+    <div className="auth-container">
       <h1>Login</h1>
 
-      {loading && <p className="login-loading">Checking credentials...</p>}
+      {loading && <p className="auth-loading">Checking credentials...</p>}
 
       {!loading && (
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
           <input
             id="username"
@@ -42,7 +43,7 @@ const LoginForm = ({ login, loading, error }) => {
         </form>
       )}
 
-      {error && <p className="login-error">Credentials are invalid!</p>}
+      {error && <p className="auth-error">Credentials are invalid!</p>}
     </div>
   );
 };
