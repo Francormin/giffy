@@ -1,7 +1,16 @@
-.login-form input.input-error {
-  border: 1px solid red;
+.auth-form.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
-.register-error {
-  color: red;
+.auth-input.error,
+.auth-input.error:hover,
+.auth-input.error:focus {
+  border-color: #b01;
+  box-shadow: 0 0 0 2px rgba(176, 0, 17, 0.15);
+}
+
+.validation-error {
+  color: #b01;
+  margin-top: -8px;
 }
