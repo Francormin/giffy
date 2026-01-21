@@ -6,7 +6,7 @@ import addFavService from "services/addFav";
 const useUser = () => {
   const [loginState, setLoginState] = useState({
     loading: false,
-    error: false
+    error: null
   });
 
   const { favs, jwt, setFavs, setJwt } = useContext(UserContext);
@@ -19,14 +19,17 @@ const useUser = () => {
       .catch(err => console.error(err));
 
   const login = useCallback(
-    ({ username, password }) => {
-      setLoginState({ loading: true, error: false });
-      loginService({ username, password })
-        .then(jwt => {
-          setLoginState({ loading: false, error: false });
-          setJwt(jwt);
-        })
-        .catch(() => setLoginState({ loading: false, error: true }));
+    async ({ username, password }) => {
+      setLoginState({ loading: true, error: null });
+
+      try {
+        const jwt = await loginService({ username, password });
+        setLoginState({ loading: false, error: null });
+        setJwt(jwt);
+      } catch (error) {
+        setLoginState({ loading: false, error: error.message });
+        throw error;
+      }
     },
     [setJwt]
   );
@@ -34,7 +37,7 @@ const useUser = () => {
   const clearLoginError = () =>
     setLoginState(prevState => ({
       ...prevState,
-      error: false
+      error: null
     }));
 
   const logout = () => setJwt(null);
