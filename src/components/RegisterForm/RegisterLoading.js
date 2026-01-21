@@ -1,8 +1,4 @@
-import { useFormikContext } from "formik";
-
-const RegisterLoading = () => {
-  const { isSubmitting } = useFormikContext();
-
+const RegisterLoading = ({ isSubmitting }) => {
   if (!isSubmitting) return null;
   return <p className="auth-loading">Registering user...</p>;
 };

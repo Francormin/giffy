@@ -9,23 +9,21 @@ const RegisterFormik = ({ handleSubmit }) => (
     validate={validateFields}
     onSubmit={handleSubmit}
   >
-    {({ errors, isValid, isSubmitting }) => (
+    {({ isValid, isSubmitting }) => (
       <>
-        <RegisterLoading />
+        <RegisterLoading isSubmitting={isSubmitting} />
 
         <Form className={`auth-form ${isSubmitting ? "disabled" : ""}`}>
           <FormField
             label="Username"
             name="username"
             type="text"
-            error={errors.username}
           />
 
           <FormField
             label="Password"
             name="password"
             type="password"
-            error={errors.password}
           />
 
           <button type="submit" disabled={!isValid || isSubmitting}>
