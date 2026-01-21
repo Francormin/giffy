@@ -6,7 +6,7 @@ import LoginForm from "components/LoginForm";
 
 const Login = () => {
   const [, navigate] = useLocation();
-  const { isLogged, login, loginIsLoading, loginHasError } = useUser();
+  const { isLogged, login, loginIsLoading, loginHasError, clearLoginError } = useUser();
 
   useEffect(() => {
     if (isLogged) navigate("/");
@@ -23,6 +23,7 @@ const Login = () => {
         login={login}
         loading={loginIsLoading}
         error={loginHasError}
+        clearError={clearLoginError}
       />
     </>
   );
