@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import register from "services/register";
-import RegisterFormik from "./RegisterFormik";
+import RegisterHookForm from "./RegisterHookForm";
 import "../../styles/auth.css";
 import "./styles.css";
 
@@ -10,15 +10,12 @@ const RegisterForm = () => {
   const [error, setError] = useState(null);
   const [, navigate] = useLocation();
 
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = values => {
     setError(null);
 
-    register(values)
+    return register(values)
       .then(() => setIsRegistered(true))
-      .catch(error => setError(error.message))
-      .finally(() => {
-        setSubmitting(false);
-      });
+      .catch(error => setError(error.message));
   };
 
   useEffect(() => {
@@ -42,7 +39,7 @@ const RegisterForm = () => {
         <>
           <h1>Register</h1>
 
-          <RegisterFormik handleSubmit={handleSubmit} />
+          <RegisterHookForm onSubmit={handleSubmit} />
 
           {error && <p className="auth-error">{error}</p>}
         </>
