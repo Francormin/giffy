@@ -1,19 +1,15 @@
-const addFav = ({ id, jwt }) => {
-  return fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs/${id}`, {
+const addFav = async ({ id, jwt }) => {
+  const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs/${id}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ jwt })
-  })
-    .then(response => {
-      if (!response.ok) throw new Error();
-      return response.json();
-    })
-    .then(response => {
-      const { favs } = response;
-      return favs;
-    });
+  });
+
+  if (!response.ok) throw new Error();
+
+  const parsedResponse = await response.json();
+  const { favs } = parsedResponse;
+  return favs;
 };
 
 export default addFav;

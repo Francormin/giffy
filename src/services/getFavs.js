@@ -1,19 +1,17 @@
-const getFavs = ({ jwt }) => {
-  return fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs`, {
+const getFavs = async ({ jwt }) => {
+  const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/favs`, {
     method: "GET",
     headers: {
       Authorization: jwt,
       "Content-Type": "application/json"
     }
-  })
-    .then(response => {
-      if (!response.ok) throw new Error();
-      return response.json();
-    })
-    .then(response => {
-      const { favs } = response;
-      return favs;
-    });
+  });
+
+  if (!response.ok) throw new Error();
+
+  const parsedResponse = await response.json();
+  const { favs } = parsedResponse;
+  return favs;
 };
 
 export default getFavs;
