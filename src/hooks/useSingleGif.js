@@ -13,9 +13,11 @@ const useSingleGif = id => {
   useEffect(() => {
     if (!gif) {
       setIsLoading(true);
+
       getSingleGif(id)
-        .then(gif => {
-          setGif(gif);
+        .then(gifs => {
+          const [singleGif] = gifs;
+          setGif(singleGif || null);
           setIsLoading(false);
           setIsError(false);
         })

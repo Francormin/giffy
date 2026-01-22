@@ -9,15 +9,11 @@ const mapGif = ({ id, type, title, alt_text, rating, username, images }) => ({
 });
 
 export const fromApiResponseToGifs = apiResponse => {
-  if ("data" in apiResponse === false) return [];
+  if (!apiResponse?.data) return [];
   
   const { data } = apiResponse;
 
-  if (Array.isArray(data)) {
-    if (data.length === 0) return data;
-    return data.map(mapGif);
-  }
-
-  if (Object.keys(data).length === 0) return data;
-  return mapGif(data);
+  if (Array.isArray(data)) return data.map(mapGif);
+  if (!Object.keys(data).length) return [];
+  return [mapGif(data)];
 };
