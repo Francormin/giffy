@@ -26,25 +26,6 @@
   object-fit: contain;
 }
 
-.link-back-home {
-  display: inline-block;
-  color: var(--primary-font-color);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin: 1rem auto;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  transition: border 0.2s ease, transform 0.2s ease;
-}
-
-@media (hover: hover) {
-  .link-back-home:hover {
-    border: 1px solid var(--primary-font-color);
-    transform: translateY(-2px);
-  }
-}
-
 @media (min-width: 600px) {
   .code-error-text {
     font-size: 3rem;

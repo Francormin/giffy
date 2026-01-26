@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link } from "wouter";
+import Button from "components/Button";
 import "./styles.css";
 
 const ERROR_GIFS = [
@@ -23,9 +23,7 @@ const ResourceNotFound = () => {
       <span className="msg-error-text">Sometimes getting lost isn&apos;t that bad</span>
       <img className="gif-error" src={gifUrl} alt="Resource not found" />
 
-      <Link className="link-back-home" href="/">
-        Go back home
-      </Link>
+      <Button href="/">Go back home</Button>
     </div>
   );
 };
