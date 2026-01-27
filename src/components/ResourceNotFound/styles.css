@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: center;
   color: var(--secondary-font-color);
 }
@@ -20,7 +20,7 @@
 }
 
 .gif-error {
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   width: 240px;
   height: 240px;
   object-fit: contain;
@@ -39,10 +39,6 @@
   .gif-error {
     width: 300px;
     height: 300px;
-  }
-
-  .link-back-home {
-    font-size: 1rem;
   }
 }
 
@@ -63,9 +59,5 @@
   .gif-error {
     width: 380px;
     height: 380px;
-  }
-
-  .link-back-home {
-    font-size: 1.1rem;
   }
 }
