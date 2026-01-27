@@ -1,7 +1,9 @@
-import { Link } from "./styles";
+import { Button, Link } from "./styled.js";
 
-const Button = ({ children, href }) => {
-  return <Link href={href}>{children}</Link>;
+const ButtonComponent = ({ children, ...props }) => {
+  return props.href 
+    ? <Link {...props}>{children}</Link>
+    : <Button {...props}>{children}</Button>;
 };
 
-export default Button;
+export default ButtonComponent;
