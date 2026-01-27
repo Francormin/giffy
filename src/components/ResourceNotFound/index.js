@@ -23,7 +23,7 @@ const ResourceNotFound = () => {
       <span className="msg-error-text">Sometimes getting lost isn&apos;t that bad</span>
       <img className="gif-error" src={gifUrl} alt="Resource not found" />
 
-      <Button href="/">Go back home</Button>
+      <Button variant="primary" href="/">Go back home</Button>
     </div>
   );
 };

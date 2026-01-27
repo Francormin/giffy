@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "wouter";
 import { LANGUAGES, RATINGS } from "constants/search";
 import useForm from "hooks/useForm";
+import Button from "components/Button";
 import "./styles.css";
 
 const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage = "en" }) => {
@@ -45,9 +46,9 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           onChange={handleChange}
         />
 
-        <button type="submit" disabled={!keyword.length}>
+        <Button type="submit" variant="primary" size="lg" disabled={!keyword.length}>
           Search
-        </button>
+        </Button>
       </div>
 
       <div className="SearchForm-filters">
@@ -75,13 +76,15 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
           ))}
         </select>
 
-        <button
+        <Button
           type="button"
+          variant="secondary"
+          size="sm"
           disabled={!keyword.length && rating === "g" && language === "en"}
           onClick={handleResetFilters}
         >
           Reset Filters
-        </button>
+        </Button>
       </div>
     </form>
   );
