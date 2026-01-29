@@ -1,4 +1,4 @@
-import { StyledText } from "./styles.js";
+import { StyledText } from "./styles";
 
 const Text = ({ as = "p", variant = "body", children, ...props }) => {
   return (

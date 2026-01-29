@@ -1,4 +1,4 @@
-import { Button, Link } from "./styled.js";
+import { Button, Link } from "./styled";
 
 const ButtonComponent = ({ children, ...props }) => {
   return props.href 

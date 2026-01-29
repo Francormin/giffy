@@ -1,6 +1,6 @@
 export const typography = {
   fontFamily: {
-    base: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+    base: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
   },
 
   text: {
