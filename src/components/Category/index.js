@@ -1,15 +1,19 @@
-import { Link } from "wouter";
+import Button from "components/Button";
+import Text from "components/Text";
 import "./styles.css";
 
 const Category = ({ name, options }) => {
   return (
     <div className="category-container">
-      <h2>{name}</h2>
+      <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
+        {name}
+      </Text>
+
       <div className="category-list-container">
         {options.map(option => (
-          <Link to={`/search/${option}`} key={option} className="category-item">
+          <Button to={`/search/${option}`} key={option} className="category-item">
             {option}
-          </Link>
+          </Button>
         ))}
       </div>
     </div>

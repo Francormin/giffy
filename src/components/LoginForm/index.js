@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "components/Button";
+import Text from "components/Text";
 import "../../styles/auth.css";
 import "./styles.css";
 
@@ -26,9 +28,11 @@ const LoginForm = ({ login, loading, error, clearError }) => {
 
   return (
     <div className="auth-container">
-      <h1>Login</h1>
+      <Text as="h1" variant="heading" style={{ marginBottom: "1rem" }}>
+        Login
+      </Text>
 
-      {loading && <p className="auth-loading">Checking credentials...</p>}
+      {loading && <Text className="auth-loading">Checking credentials...</Text>}
 
       {!loading && (
         <form className="auth-form" onSubmit={handleSubmit}>
@@ -50,13 +54,13 @@ const LoginForm = ({ login, loading, error, clearError }) => {
             placeholder="Password"
           />
 
-          <button type="submit" disabled={!username || !password}>
+          <Button type="submit" disabled={!username || !password}>
             Login
-          </button>
+          </Button>
         </form>
       )}
 
-      {error && <p className="auth-error">{errorMessage}</p>}
+      {error && <Text className="auth-error">{errorMessage}</Text>}
     </div>
   );
 };

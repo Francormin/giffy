@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import register from "services/register";
 import RegisterHookForm from "./RegisterHookForm";
+import Text from "components/Text";
 import "../../styles/auth.css";
 import "./styles.css";
 
@@ -32,16 +33,20 @@ const RegisterForm = () => {
     <div className="auth-container">
       {isRegistered ? (
         <>
-          <h3>Congratulations! You&apos;ve been successfully registered!</h3>
-          <h4>You&apos;ll be redirected to Login Page in a few seconds...</h4>
+          <Text as="h3" variant="heading">
+            Congratulations! You&apos;ve been successfully registered!
+          </Text>
+          <Text>You&apos;ll be redirected to Login Page in a few seconds...</Text>
         </>
       ) : (
         <>
-          <h1>Register</h1>
+          <Text as="h1" variant="heading" style={{ marginBottom: "1rem" }}>
+            Register
+          </Text>
 
           <RegisterHookForm onSubmit={handleSubmit} />
 
-          {error && <p className="auth-error">{error}</p>}
+          {error && <Text className="auth-error">{error}</Text>}
         </>
       )}
     </div>

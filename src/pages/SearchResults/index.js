@@ -5,6 +5,7 @@ import useInfiniteScroll from "hooks/useInfiniteScroll";
 import ListOfGifs from "components/ListOfGifs";
 import Spinner from "components/Spinner";
 import SearchForm from "components/SearchForm";
+import Text from "components/Text";
 
 const SearchResults = ({ params }) => {
   const { keyword, rating = "g", language = "en" } = params;
@@ -41,7 +42,9 @@ const SearchResults = ({ params }) => {
           initialLanguage={language}
         />
 
-        <h3>results for: {decodedKeyword}</h3>
+        <Text as="h3" variant="heading" style={{ marginBottom: "1rem" }}>
+          results for: {decodedKeyword}
+        </Text>
 
         <ListOfGifs gifs={gifs} />
 

@@ -4,6 +4,7 @@ import useGifs from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
+import Text from "components/Text";
 
 const Home = () => {
   useGifs();
@@ -24,7 +25,9 @@ const Home = () => {
       <div className="Home-container">
         <SearchForm />
 
-        <h2>Last search</h2>
+        <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
+          Last search
+        </Text>
 
         <ListOfGifs gifs={first15Gifs} />
 

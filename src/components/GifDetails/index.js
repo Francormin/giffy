@@ -1,3 +1,4 @@
+import Text from "components/Text";
 import "./styles.css";
 
 const GifDetails = ({ gif }) => {
@@ -10,22 +11,24 @@ const GifDetails = ({ gif }) => {
       </div>
 
       <div className="GifDetails-info">
-        <h1 className="GifDetails-title">
+        <Text as="h1" variant="heading">
           {title || "Untitled GIF"}
-        </h1>
+        </Text>
 
         <div className="GifDetails-meta">
-          <span className="badge">{type}</span>
-          <span className="badge">⭐ {rating}</span>
+          <Text as="span" className="badge">
+            {type}
+          </Text>
+          <Text as="span" className="badge">
+            ⭐ {rating}
+          </Text>
         </div>
 
-        <p className="GifDetails-description">
-          {description || "No description provided."}
-        </p>
+        <Text>{description || "No description provided."}</Text>
 
-        <p className="GifDetails-user">
+        <Text variant="caption" style={{ opacity: 0.7 }}>
           Uploaded by <strong>{username || "Anonymous"}</strong>
-        </p>
+        </Text>
       </div>
     </section>
   );

@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import RegisterLoading from "./RegisterLoading";
+import Button from "components/Button";
+import Text from "components/Text";
 
 const RegisterHookForm = ({ onSubmit }) => {
   const {
@@ -29,7 +31,11 @@ const RegisterHookForm = ({ onSubmit }) => {
           })}
           className={`auth-input ${errors.username ? "error" : ""}`}
         />
-        {errors.username && <small className="validation-error">{errors.username.message}</small>}
+        {errors.username && (
+          <Text as="small" variant="caption" className="validation-error">
+            {errors.username.message}
+          </Text>
+        )}
 
         <label htmlFor="password">Password</label>
         <input
@@ -44,11 +50,15 @@ const RegisterHookForm = ({ onSubmit }) => {
           })}
           className={`auth-input ${errors.password ? "error" : ""}`}
         />
-        {errors.password && <small className="validation-error">{errors.password.message}</small>}
+        {errors.password && (
+          <Text as="small" variant="caption" className="validation-error">
+            {errors.password.message}
+          </Text>
+        )}
 
-        <button type="submit" disabled={isSubmitting}>
+        <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Registering..." : "Register"}
-        </button>
+        </Button>
       </form>
     </>
   );
