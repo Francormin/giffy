@@ -20,13 +20,12 @@
 .Gif-link {
   color: var(--secondary-font-color);
   display: block;
-  text-decoration: none;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.Gif-link h6 {
+.Gif-link h5 {
   background: rgba(0, 0, 0, 0.837);
   position: absolute;
   bottom: 0;
@@ -36,13 +35,13 @@
 }
 
 @media (hover: hover) {
-  .Gif-link h6 {
+  .Gif-link h5 {
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.15s ease, transform 0.15s ease;
   }
 
-  .Gif-card:hover h6 {
+  .Gif-card:hover h5 {
     opacity: 1;
     transform: translateY(0);
   }

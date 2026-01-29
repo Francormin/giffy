@@ -20,10 +20,6 @@
   font-size: inherit;
 }
 
-.Header-component a {
-  text-decoration: none;
-}
-
 .Header-component button:hover,
 .Header-component a:hover {
   text-decoration: underline;

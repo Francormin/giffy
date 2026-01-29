@@ -11,19 +11,15 @@
 
 /* Item base */
 .category-item {
-  padding: 6px 12px;
-  font-size: 14px;
-  border-radius: 999px;
-  text-decoration: none;
   color: var(--primary-font-color);
-  background: rgba(255, 255, 255, 0.08);
-  transition: background 0.15s ease, transform 0.15s ease;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
 /* Desktop hover */
 @media (hover: hover) {
   .category-item:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-1px);
   }
 }
