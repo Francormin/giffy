@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 
-// Button shared styles
-
 export const buttonBase = theme => css`
   border: 1px solid transparent;
   border-radius: ${theme.components.button.radius};
   cursor: pointer;
+  font-family: ${theme.typography.fontFamily.base};
+  font-weight: ${theme.typography.fontWeight.medium};
 
   transition:
     background-color 0.15s ease,
