@@ -13,7 +13,6 @@ import Spinner from "components/Spinner";
 import Header from "components/Header";
 
 import "App.css";
-import "theme.css";
 
 const HomePage = React.lazy(() => import("pages/Home"));
 const LoginPage = React.lazy(() => import("pages/Login"));
