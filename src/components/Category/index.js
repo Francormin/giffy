@@ -1,22 +1,26 @@
-import Button from "components/Button";
 import Text from "components/Text";
-import "./styles.css";
+import { CategoryContainer, CategoryItem, CategoryList } from "./styles";
 
 const Category = ({ name, options }) => {
   return (
-    <div className="category-container">
+    <CategoryContainer>
       <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
         {name}
       </Text>
 
-      <div className="category-list-container">
+      <CategoryList>
         {options.map(option => (
-          <Button to={`/search/${option}`} key={option} className="category-item">
+          <CategoryItem
+            key={option}
+            to={`/search/${option}`}
+            size="sm"
+            variant="secondary"
+          >
             {option}
-          </Button>
+          </CategoryItem>
         ))}
-      </div>
-    </div>
+      </CategoryList>
+    </CategoryContainer>
   );
 };
 
