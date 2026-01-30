@@ -22,5 +22,18 @@ export const variants = {
       color: ${theme.colors.background.primary};
       border-color: ${theme.colors.background.primary};
     `
+  },
+
+  category: {
+    base: theme => css`
+      background-color: rgba(255, 255, 255, 0.08);
+      color: ${theme.colors.text.primary};
+      border-color: transparent;
+    `,
+    hover: theme => css`
+      background-color: rgba(255, 255, 255, 0.15);
+      color: ${theme.colors.text.primary};
+      transform: translateY(-1px);
+    `
   }
 };

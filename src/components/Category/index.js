@@ -1,5 +1,6 @@
 import Text from "components/Text";
-import { CategoryContainer, CategoryItem, CategoryList } from "./styles";
+import Button from "components/Button";
+import { CategoryContainer, CategoryList } from "./styles";
 
 const Category = ({ name, options }) => {
   return (
@@ -10,14 +11,14 @@ const Category = ({ name, options }) => {
 
       <CategoryList>
         {options.map(option => (
-          <CategoryItem
+          <Button
             key={option}
             to={`/search/${option}`}
             size="sm"
-            variant="secondary"
+            variant="category"
           >
             {option}
-          </CategoryItem>
+          </Button>
         ))}
       </CategoryList>
     </CategoryContainer>
