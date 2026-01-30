@@ -1,7 +1,9 @@
 import { Button, Link } from "./styled";
 
 const ButtonComponent = ({ children, ...props }) => {
-  return props.href 
+  const isLink = props.href || props.to;
+
+  return isLink
     ? <Link {...props}>{children}</Link>
     : <Button {...props}>{children}</Button>;
 };

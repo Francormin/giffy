@@ -11,7 +11,7 @@ export const buttonBase = theme => css`
     background-color 0.15s ease,
     color 0.15s ease,
     border-color 0.15s ease,
-    transform 0.2s ease;
+    transform 0.15s ease;
 `;
 
 export const buttonDisabled = css`
