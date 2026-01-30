@@ -17,7 +17,6 @@ export const buttonBase = theme => css`
 export const buttonDisabled = css`
   opacity: 0.45;
   cursor: not-allowed;
-  pointer-events: none;
   transform: none;
 `;
 
