@@ -2,6 +2,7 @@ import { useCallback, useContext, useState } from "react";
 import UserContext from "context/UserContext";
 import loginService from "services/login";
 import addFavService from "services/addFav";
+import removeFavService from "services/removeFav";
 
 const useUser = () => {
   const [loginState, setLoginState] = useState({
@@ -15,6 +16,11 @@ const useUser = () => {
 
   const addFav = id =>
     addFavService({ id, jwt })
+      .then(setFavs)
+      .catch(err => console.error(err));
+
+  const removeFav = id =>
+    removeFavService({ id, jwt })
       .then(setFavs)
       .catch(err => console.error(err));
 
@@ -45,6 +51,7 @@ const useUser = () => {
   return {
     checkIfGifIsFaved,
     addFav,
+    removeFav,
     isLogged: Boolean(jwt),
     login,
     loginIsLoading: loginState.loading,

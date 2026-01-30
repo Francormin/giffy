@@ -14,7 +14,8 @@ const Fav = ({ id }) => {
     loginHasError,
     clearLoginError,
     checkIfGifIsFaved,
-    addFav
+    addFav,
+    removeFav
   } = useUser();
 
   const isFaved = checkIfGifIsFaved(id);
@@ -23,6 +24,12 @@ const Fav = ({ id }) => {
 
   const handleFavGif = () => {
     if (!isLogged) return setShowModal(true);
+
+    if (isFaved) {
+      removeFav(id);
+      return;
+    }
+
     addFav(id);
   };
 
