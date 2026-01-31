@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useUser from "hooks/useUser";
 import Modal from "components/Modal";
 import LoginForm from "components/LoginForm";
-import "./styles.css";
+import { FavButton } from "./styles";
 
 const Fav = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
@@ -44,11 +44,11 @@ const Fav = ({ id }) => {
 
   return (
     <>
-      <button className="fav-button" onClick={handleFavGif}>
+      <FavButton onClick={handleFavGif}>
         <span aria-label={label} role="img">
           {emoji}
         </span>
-      </button>
+      </FavButton>
 
       {showModal && (
         <Modal onClose={handleCloseModal}>
