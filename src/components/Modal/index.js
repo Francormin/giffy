@@ -1,14 +1,14 @@
 import { createPortal } from "react-dom";
-import "./styles.css";
+import { CloseButton, Content, Overlay } from "./styles";
 
 const Modal = ({ children, onClose }) => {
   return createPortal(
-    <div className="modal-container">
-      <div className="modal-content">
-        <button className="modal-close-btn" onClick={onClose}>✖</button>
+    <Overlay onClick={onClose}>
+      <Content onClick={e => e.stopPropagation()}>
+        <CloseButton onClick={onClose}>✖</CloseButton>
         {children}
-      </div>
-    </div>,
+      </Content>
+    </Overlay>,
     document.body
   );
 };
