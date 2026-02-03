@@ -22,6 +22,7 @@ const RegisterHookForm = ({ onSubmit }) => {
         <input
           id="username"
           type="text"
+          placeholder="Username"
           {...register("username", {
             required: "Username is required",
             minLength: {
@@ -41,6 +42,7 @@ const RegisterHookForm = ({ onSubmit }) => {
         <input
           id="password"
           type="password"
+          placeholder="Password"
           {...register("password", {
             required: "Password is required",
             minLength: {
