@@ -1,6 +1,6 @@
-import { Link, useRoute, useLocation } from "wouter";
+import { useRoute, useLocation } from "wouter";
 import useUser from "hooks/useUser";
-import "./styles.css";
+import { HeaderButton, HeaderContainer, HeaderLink } from "./styles";
 
 const Header = () => {
   const [, navigate] = useLocation();
@@ -14,28 +14,25 @@ const Header = () => {
   };
 
   let headerOptions;
+
   if (isLogged) {
-    headerOptions = <button onClick={handleLogout}>Logout</button>;
+    headerOptions = <HeaderButton onClick={handleLogout}>Logout</HeaderButton>;
   } else {
     if (matchLogin) {
-      headerOptions = <Link to="/register">Register</Link>;
+      headerOptions = <HeaderLink to="/register">Register</HeaderLink>;
     } else if (matchRegister) {
-      headerOptions = <Link to="/login">Login</Link>;
+      headerOptions = <HeaderLink to="/login">Login</HeaderLink>;
     } else {
       headerOptions = (
         <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <HeaderLink to="/login">Login</HeaderLink>
+          <HeaderLink to="/register">Register</HeaderLink>
         </>
       );
     }
   }
 
-  return (
-    <div className="Header-component">
-      {headerOptions}
-    </div>
-  );
+  return <HeaderContainer>{headerOptions}</HeaderContainer>;
 };
 
 export default Header;
