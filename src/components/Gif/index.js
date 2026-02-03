@@ -1,20 +1,19 @@
 import React from "react";
-import { Link } from "wouter";
 import Fav from "components/Fav";
-import "./styles.css";
+import { GifButtons, GifCard, GifImage, GifLink, GifTitle } from "./styles";
 
 const Gif = ({ id, title, url }) => {
   return (
-    <div className="Gif-card">
-      <div className="Gif-buttons">
+    <GifCard>
+      <GifButtons>
         <Fav id={id} />
-      </div>
+      </GifButtons>
 
-      <Link to={`/gif/${id}`} className="Gif-link">
-        <h5>{title}</h5>
-        <img src={url} alt={title} loading="lazy" />
-      </Link>
-    </div>
+      <GifLink to={`/gif/${id}`}>
+        <GifTitle>{title}</GifTitle>
+        <GifImage src={url} alt={title} loading="lazy" />
+      </GifLink>
+    </GifCard>
   );
 };
 
