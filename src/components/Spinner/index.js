@@ -1,13 +1,13 @@
-import "./styles.css";
+import { Dot, Loader, LoaderContainer } from "./styles";
 
 const Spinner = () => (
-  <div className="loader-container">
-    <div className="loader">
-      <div />
-      <div />
-      <div />
-    </div>
-  </div>
+  <LoaderContainer>
+    <Loader>
+      <Dot />
+      <Dot />
+      <Dot />
+    </Loader>
+  </LoaderContainer>
 );
 
 export default Spinner;
