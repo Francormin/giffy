@@ -1,9 +1,6 @@
-import { Link as WouterLink } from "wouter";
 import styled from "@emotion/styled";
-
-import { buttonBase, buttonDisabled, buttonFocus } from "./styles";
-import { variants } from "./styles";
-import { sizes } from "./styles";
+import { Link as WouterLink } from "wouter";
+import { buttonBase, buttonDisabled, buttonFocus, variants, sizes } from "./styles";
 
 export const Link = styled(WouterLink)`
   ${({ theme }) => buttonBase(theme)};

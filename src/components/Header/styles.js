@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Link as WouterLink } from "wouter";
+import { Link } from "wouter";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -19,7 +19,7 @@ const actionStyles = theme => ({
   }
 });
 
-export const HeaderLink = styled(WouterLink)(({ theme }) => ({
+export const HeaderLink = styled(Link)(({ theme }) => ({
   ...actionStyles(theme)
 }));
 
