@@ -6,6 +6,7 @@ import ListOfGifs from "components/ListOfGifs";
 import Spinner from "components/Spinner";
 import SearchForm from "components/SearchForm";
 import Text from "components/Text";
+import PageContainer from "components/Layout/PageContainer";
 
 const SearchResults = ({ params }) => {
   const { keyword, rating = "g", language = "en" } = params;
@@ -35,7 +36,7 @@ const SearchResults = ({ params }) => {
         />
       </Helmet>
 
-      <div className="SearchResults-container">
+      <PageContainer>
         <SearchForm
           initialKeyword={decodedKeyword}
           initialRating={rating}
@@ -51,7 +52,7 @@ const SearchResults = ({ params }) => {
         <div id="visor" ref={externalRef}></div>
 
         {isLoading && <Spinner />}
-      </div>
+      </PageContainer>
     </>
   );
 };

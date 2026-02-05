@@ -5,6 +5,7 @@ import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
 import Text from "components/Text";
+import PageContainer from "components/Layout/PageContainer";
 
 const Home = () => {
   useGifs();
@@ -22,7 +23,7 @@ const Home = () => {
         />
       </Helmet>
 
-      <div className="Home-container">
+      <PageContainer>
         <SearchForm />
 
         <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
@@ -32,7 +33,7 @@ const Home = () => {
         <ListOfGifs gifs={first15Gifs} />
 
         <TrendingSearches />
-      </div>
+      </PageContainer>
     </>
   );
 };

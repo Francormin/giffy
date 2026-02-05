@@ -3,6 +3,7 @@ import { Redirect } from "wouter";
 import useSingleGif from "hooks/useSingleGif";
 import GifDetails from "components/GifDetails";
 import Spinner from "components/Spinner";
+import PageContainer from "components/Layout/PageContainer";
 
 const Detail = ({ params }) => {
   const { id } = params;
@@ -32,7 +33,9 @@ const Detail = ({ params }) => {
         />
       </Helmet>
 
-      <GifDetails gif={gif} />
+      <PageContainer>
+        <GifDetails gif={gif} />
+      </PageContainer>
     </>
   );
 };

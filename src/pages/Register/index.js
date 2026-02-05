@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Helmet } from "react-helmet-async";
 import useUser from "hooks/useUser";
 import RegisterForm from "components/RegisterForm";
+import PageContainer from "components/Layout/PageContainer";
 
 const Register = () => {
   const [, navigate] = useLocation();
@@ -19,7 +20,9 @@ const Register = () => {
         <meta name="description" content="Create your Giffy account" />
       </Helmet>
 
-      <RegisterForm />
+      <PageContainer>
+        <RegisterForm />
+      </PageContainer>
     </>
   );
 };

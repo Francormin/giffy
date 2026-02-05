@@ -27,11 +27,3 @@
 .App-logo-link:hover .App-logo.pulse {
   filter: drop-shadow(0 8px 16px rgba(0, 91, 176, 0.35)) saturate(1.1) brightness(1.05);
 }
-
-.Home-container {
-  padding: 0px 20px;
-}
-
-.SearchResults-container {
-  padding: 0px 20px;
-}

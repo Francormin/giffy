@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import SearchForm from "components/SearchForm";
 import ResourceNotFound from "components/ResourceNotFound";
+import PageContainer from "components/Layout/PageContainer";
 
 const NotFound = () => {
   return (
@@ -10,9 +11,11 @@ const NotFound = () => {
         <meta name="description" content="Page not found - Giffy" />
       </Helmet>
 
-      <SearchForm />
+      <PageContainer>
+        <SearchForm />
 
-      <ResourceNotFound />
+        <ResourceNotFound />
+      </PageContainer>
     </>
   );
 };
