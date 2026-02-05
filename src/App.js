@@ -21,62 +21,60 @@ const RegisterPage = React.lazy(() => import("pages/Register"));
 const App = () => {
   return (
     <UserContextProvider>
-      <div className="App">
-        <section className="App-content">
-          <Header />
+      <main className="App-content">
+        <Header />
 
-          <Link to="/">
-            <img
-              className="App-logo pulse"
-              src="/giffy_logo.png"
-              alt="giffy logo"
+        <Link to="/">
+          <img
+            className="App-logo pulse"
+            src="/giffy_logo.png"
+            alt="giffy logo"
+          />
+        </Link>
+
+        <GifsContextProvider>
+          <ScrollToTop />
+
+          <Switch>
+            <Route path="/">
+              <Suspense fallback={<Spinner />}>
+                <HomePage />
+              </Suspense>
+            </Route>
+
+            <Route path="/login">
+              <Suspense fallback={<Spinner />}>
+                <LoginPage />
+              </Suspense>
+            </Route>
+
+            <Route path="/register">
+              <Suspense fallback={<Spinner />}>
+                <RegisterPage />
+              </Suspense>
+            </Route>
+
+            <Route
+              path="/search/:keyword/:rating?/:language?"
+              component={SearchResults}
             />
-          </Link>
 
-          <GifsContextProvider>
-            <ScrollToTop />
+            <Route
+              path="/gif/:id"
+              component={Detail}
+            />
 
-            <Switch>
-              <Route path="/">
-                <Suspense fallback={<Spinner />}>
-                  <HomePage />
-                </Suspense>
-              </Route>
+            <Route
+              path="/404"
+              component={NotFound}
+            />
 
-              <Route path="/login">
-                <Suspense fallback={<Spinner />}>
-                  <LoginPage />
-                </Suspense>
-              </Route>
-
-              <Route path="/register">
-                <Suspense fallback={<Spinner />}>
-                  <RegisterPage />
-                </Suspense>
-              </Route>
-
-              <Route
-                path="/search/:keyword/:rating?/:language?"
-                component={SearchResults}
-              />
-
-              <Route
-                path="/gif/:id"
-                component={Detail}
-              />
-
-              <Route
-                path="/404"
-                component={NotFound}
-              />
-
-              <Route
-                component={NotFound}
-              />
-            </Switch>
-          </GifsContextProvider>
-        </section>
-      </div>
+            <Route
+              component={NotFound}
+            />
+          </Switch>
+        </GifsContextProvider>
+      </main>
     </UserContextProvider>
   );
 };
