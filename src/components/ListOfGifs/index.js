@@ -1,8 +1,8 @@
 import Gif from "components/Gif";
-import "./styles.css";
+import { Grid } from "./styles";
 
 const ListOfGifs = ({ gifs }) => (
-  <div className="ListOfGifs-grid">
+  <Grid>
     {gifs?.map(({ id, title, url, ...restOfGif }) => (
       <Gif
         key={url}
@@ -12,7 +12,7 @@ const ListOfGifs = ({ gifs }) => (
         extraInfo={restOfGif}
       />
     ))}
-  </div>
+  </Grid>
 );
 
 export default ListOfGifs;
