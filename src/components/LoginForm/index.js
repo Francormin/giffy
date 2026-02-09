@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Button from "components/Button";
 import Text from "components/Text";
-import "../../styles/auth.css";
-import "./styles.css";
+import { AuthContainer, AuthError, AuthForm, AuthLoading } from "styles/auth.styles";
 
 const LoginForm = ({ login, loading, error, clearError }) => {
   const [username, setUsername] = useState("");
@@ -27,22 +26,20 @@ const LoginForm = ({ login, loading, error, clearError }) => {
   };
 
   return (
-    <div className="auth-container">
+    <AuthContainer>
       <Text as="h1" variant="heading" style={{ marginBottom: "1rem" }}>
         Login
       </Text>
 
-      {loading && <Text className="auth-loading">Checking credentials...</Text>}
+      {loading && <AuthLoading>Checking credentials...</AuthLoading>}
 
       {!loading && (
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <AuthForm onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
           <input
             id="username"
-            type="text"
             value={username}
             onChange={handleUsernameChange}
-            placeholder="Username"
           />
 
           <label htmlFor="password">Password</label>
@@ -51,17 +48,16 @@ const LoginForm = ({ login, loading, error, clearError }) => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
-            placeholder="Password"
           />
 
           <Button type="submit" disabled={!username || !password}>
             Login
           </Button>
-        </form>
+        </AuthForm>
       )}
 
-      {error && <Text className="auth-error">{errorMessage}</Text>}
-    </div>
+      {error && <AuthError>{errorMessage}</AuthError>}
+    </AuthContainer>
   );
 };
 
