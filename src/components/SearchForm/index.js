@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { LANGUAGES, RATINGS } from "constants/search";
 import useForm from "hooks/useForm";
 import Button from "components/Button";
-import "./styles.css";
+import { FiltersRow, Form, Input, MainRow, Select } from "./styles";
 
 const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage = "en" }) => {
   const { keyword, rating, language, updateKeyword, updateRating, updateLanguage, resetFilters } =
@@ -37,22 +37,27 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="SearchForm">
-      <div className="SearchForm-main">
-        <input
+    <Form onSubmit={handleSubmit}>
+      <MainRow>
+        <Input
           type="text"
           placeholder="Search a gif here..."
           value={keyword}
           onChange={handleChange}
         />
 
-        <Button type="submit" variant="primary" size="lg" disabled={!keyword.length}>
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          disabled={!keyword.length}
+        >
           Search
         </Button>
-      </div>
+      </MainRow>
 
-      <div className="SearchForm-filters">
-        <select value={rating} onChange={handleChangeRating}>
+      <FiltersRow>
+        <Select value={rating} onChange={handleChangeRating}>
           <option disabled value="">
             Rating
           </option>
@@ -62,9 +67,9 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
               {label}
             </option>
           ))}
-        </select>
+        </Select>
 
-        <select value={language} onChange={handleChangeLanguage}>
+        <Select value={language} onChange={handleChangeLanguage}>
           <option disabled value="">
             Language
           </option>
@@ -74,7 +79,7 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
               {label}
             </option>
           ))}
-        </select>
+        </Select>
 
         <Button
           type="button"
@@ -85,8 +90,8 @@ const SearchForm = ({ initialKeyword = "", initialRating = "g", initialLanguage 
         >
           Reset Filters
         </Button>
-      </div>
-    </form>
+      </FiltersRow>
+    </Form>
   );
 };
 
