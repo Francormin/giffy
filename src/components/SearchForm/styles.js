@@ -26,15 +26,15 @@ export const Input = styled.input`
   outline: none;
   font-size: 16px;
 
-  color: var(--primary-background-color);
-  background-color: var(--secondary-font-color);
+  color: ${({ theme }) => theme.colors.background.primary};
+  background-color: ${({ theme }) => theme.colors.text.secondary};
 
   &::placeholder {
     opacity: 0.7;
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px var(--secondary-background-color);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.brand.primary};
   }
 `;
 
@@ -56,11 +56,11 @@ export const Select = styled.select`
   border: none;
   outline: none;
 
-  color: var(--primary-background-color);
-  background-color: var(--secondary-font-color);
+  color: ${({ theme }) => theme.colors.background.primary};
+  background-color: ${({ theme }) => theme.colors.text.secondary};
 
   &:focus {
-    outline: 2px solid var(--secondary-background-color);
+    outline: 2px solid ${({ theme }) => theme.colors.brand.primary};
   }
 
   @media (min-width: 660px) {
