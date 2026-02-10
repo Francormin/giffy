@@ -27,7 +27,7 @@ const LoginForm = ({ login, loading, error, clearError }) => {
 
   return (
     <AuthContainer>
-      <Text as="h1" variant="heading" style={{ marginBottom: "1rem" }}>
+      <Text as="h1" variant="heading">
         Login
       </Text>
 

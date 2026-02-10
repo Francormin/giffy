@@ -41,7 +41,7 @@ const RegisterForm = () => {
         </>
       ) : (
         <>
-          <Text as="h1" variant="heading" style={{ marginBottom: "1rem" }}>
+          <Text as="h1" variant="heading">
             Register
           </Text>
 

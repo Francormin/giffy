@@ -5,7 +5,7 @@ import { CategoryContainer, CategoryList } from "./styles";
 const Category = ({ name, options }) => {
   return (
     <CategoryContainer>
-      <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
+      <Text as="h2" variant="heading">
         {name}
       </Text>
 

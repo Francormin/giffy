@@ -28,6 +28,7 @@ export const StyledText = styled.p(({ theme, as, variant }) => ({
   color: theme.colors.text.secondary,
   ...variantStyles(theme)[variant],
   ...(variant === "heading" && {
-    fontSize: headingSizes(theme)[as] ?? theme.typography.heading.h2
+    fontSize: headingSizes(theme)[as] ?? theme.typography.heading.h2,
+    margin: "1rem 0"
   })
 }));

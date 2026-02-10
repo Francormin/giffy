@@ -43,7 +43,7 @@ const SearchResults = ({ params }) => {
           initialLanguage={language}
         />
 
-        <Text as="h3" variant="heading" style={{ marginBottom: "1rem" }}>
+        <Text as="h3" variant="heading">
           results for: {decodedKeyword}
         </Text>
 

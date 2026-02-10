@@ -26,7 +26,7 @@ const Home = () => {
       <PageContainer>
         <SearchForm />
 
-        <Text as="h2" variant="heading" style={{ marginBottom: "1rem" }}>
+        <Text as="h2" variant="heading">
           Last search
         </Text>
 
