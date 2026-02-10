@@ -12,7 +12,7 @@ import ScrollToTop from "components/ScrollToTop";
 import Spinner from "components/Spinner";
 import Header from "components/Header";
 
-import "App.css";
+import { AppContent, AppLogo } from "./App.styles";
 
 const HomePage = React.lazy(() => import("pages/Home"));
 const LoginPage = React.lazy(() => import("pages/Login"));
@@ -21,14 +21,15 @@ const RegisterPage = React.lazy(() => import("pages/Register"));
 const App = () => {
   return (
     <UserContextProvider>
-      <main className="App-content">
+      <AppContent>
         <Header />
 
         <Link to="/">
-          <img
-            className="App-logo pulse"
+          <AppLogo
             src="/giffy_logo.png"
-            alt="giffy logo"
+            alt="Giffy logo"
+            title="Go to homepage"
+            pulse
           />
         </Link>
 
@@ -74,7 +75,7 @@ const App = () => {
             />
           </Switch>
         </GifsContextProvider>
-      </main>
+      </AppContent>
     </UserContextProvider>
   );
 };
