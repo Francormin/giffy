@@ -10,6 +10,8 @@ const RegisterForm = () => {
   const [error, setError] = useState(null);
   const [, navigate] = useLocation();
 
+  const clearError = () => setError(null);
+
   const handleSubmit = values => {
     setError(null);
 
@@ -43,7 +45,7 @@ const RegisterForm = () => {
             Register
           </Text>
 
-          <RegisterHookForm onSubmit={handleSubmit} />
+          <RegisterHookForm onSubmit={handleSubmit} onChange={clearError} />
 
           {error && <AuthError>{error}</AuthError>}
         </>

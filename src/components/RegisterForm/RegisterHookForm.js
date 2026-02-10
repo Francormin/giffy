@@ -4,7 +4,7 @@ import Button from "components/Button";
 import { AuthForm } from "styles/auth.styles";
 import { AuthFormWrapper, InputErrorWrapper, ValidationError } from "./styles";
 
-const RegisterHookForm = ({ onSubmit }) => {
+const RegisterHookForm = ({ onSubmit, onChange }) => {
   const {
     handleSubmit,
     register,
@@ -27,7 +27,8 @@ const RegisterHookForm = ({ onSubmit }) => {
                 minLength: {
                   value: 4,
                   message: "Username must be at least 4 characters long"
-                }
+                },
+                onChange
               })}
             />
           </InputErrorWrapper>
@@ -44,7 +45,8 @@ const RegisterHookForm = ({ onSubmit }) => {
                 minLength: {
                   value: 8,
                   message: "Password must be at least 8 characters long"
-                }
+                },
+                onChange
               })}
             />
           </InputErrorWrapper>
