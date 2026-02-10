@@ -61,6 +61,7 @@ export const AuthForm = styled.form`
   }
 
   input {
+    width: 100%;
     padding: 0.6rem 0.75rem;
     color: ${({ theme }) => theme.colors.background.primary};
     border: 1px solid ${({ theme }) => theme.colors.text.secondary};
