@@ -3,8 +3,7 @@ import { useLocation } from "wouter";
 import register from "services/register";
 import RegisterHookForm from "./RegisterHookForm";
 import Text from "components/Text";
-import "../../styles/auth.css";
-import "./styles.css";
+import { AuthContainer, AuthError } from "styles/auth.styles";
 
 const RegisterForm = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -30,7 +29,7 @@ const RegisterForm = () => {
   }, [isRegistered, navigate]);
 
   return (
-    <div className="auth-container">
+    <AuthContainer>
       {isRegistered ? (
         <>
           <Text as="h3" variant="heading">
@@ -46,10 +45,10 @@ const RegisterForm = () => {
 
           <RegisterHookForm onSubmit={handleSubmit} />
 
-          {error && <Text className="auth-error">{error}</Text>}
+          {error && <AuthError>{error}</AuthError>}
         </>
       )}
-    </div>
+    </AuthContainer>
   );
 };
 

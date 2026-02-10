@@ -1,8 +1,8 @@
-import Text from "components/Text";
+import { AuthLoading } from "styles/auth.styles";
 
 const RegisterLoading = ({ isSubmitting }) => {
   if (!isSubmitting) return null;
-  return <Text className="auth-loading">Registering user...</Text>;
+  return <AuthLoading>Registering user...</AuthLoading>;
 };
 
 export default RegisterLoading;
