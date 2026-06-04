@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "wouter";
 
-export const HeaderContainer = styled.header`
+export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: flex-end;
   gap: 1.5rem;
@@ -19,11 +19,11 @@ const actionStyles = theme => ({
   }
 });
 
-export const HeaderLink = styled(Link)(({ theme }) => ({
+export const NavbarLink = styled(Link)(({ theme }) => ({
   ...actionStyles(theme)
 }));
 
-export const HeaderButton = styled.button(({ theme }) => ({
+export const NavbarButton = styled.button(({ theme }) => ({
   ...actionStyles(theme),
 
   background: "none",

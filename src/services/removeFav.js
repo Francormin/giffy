@@ -5,7 +5,8 @@ const removeFav = async ({ id, jwt }) => {
     body: JSON.stringify({ jwt })
   });
 
-  if (!response.ok) throw new Error();
+  if (response.status === 401) throw new Error("Unauthorized");
+  if (!response.ok) throw new Error("Error removing fav");
 
   const parsedResponse = await response.json();
   const { favs } = parsedResponse;

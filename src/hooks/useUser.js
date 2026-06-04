@@ -17,12 +17,20 @@ const useUser = () => {
   const addFav = id =>
     addFavService({ id, jwt })
       .then(setFavs)
-      .catch(err => console.error(err));
+      .catch(error => {
+        if (error.message === "Unauthorized") {
+          logout();
+        };
+      });
 
   const removeFav = id =>
     removeFavService({ id, jwt })
       .then(setFavs)
-      .catch(err => console.error(err));
+      .catch(error => {
+        if (error.message === "Unauthorized") {
+          logout();
+        }
+      });
 
   const login = useCallback(
     async ({ username, password }) => {

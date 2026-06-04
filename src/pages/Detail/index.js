@@ -21,7 +21,7 @@ const Detail = ({ params }) => {
     );
   }
 
-  if (!gif) return <Redirect to="/404" />;
+  if (gif === null) return <Redirect to="/404" />;
 
   return (
     <>

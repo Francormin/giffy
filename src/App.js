@@ -10,19 +10,20 @@ import NotFound from "pages/NotFound";
 
 import ScrollToTop from "components/ScrollToTop";
 import Spinner from "components/Spinner";
-import Header from "components/Header";
+import Navbar from "components/Navbar";
 
 import { AppContent, AppLogo } from "./App.styles";
 
 const HomePage = React.lazy(() => import("pages/Home"));
 const LoginPage = React.lazy(() => import("pages/Login"));
 const RegisterPage = React.lazy(() => import("pages/Register"));
+const FavsPage = React.lazy(() => import("pages/Favs"));
 
 const App = () => {
   return (
     <UserContextProvider>
       <AppContent>
-        <Header />
+        <Navbar />
 
         <Link to="/">
           <AppLogo
@@ -52,6 +53,12 @@ const App = () => {
             <Route path="/register">
               <Suspense fallback={<Spinner />}>
                 <RegisterPage />
+              </Suspense>
+            </Route>
+
+            <Route path="/favs">
+              <Suspense fallback={<Spinner />}>
+                <FavsPage />
               </Suspense>
             </Route>
 
