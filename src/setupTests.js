@@ -27,6 +27,8 @@ Object.defineProperty(global, 'IntersectionObserver', {
 
 beforeEach(() => {
   jest.spyOn(global, "fetch").mockResolvedValue({
+    ok: true,
+    status: 200,
     json: () =>
       Promise.resolve({
         data: [

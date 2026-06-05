@@ -12,11 +12,7 @@ const useGifs = ({ keyword, rating, language } = {}) => {
 
   const keywordToUse = keyword || localStorage.getItem("lastKeyword") || "random";
 
-  const isInitialSearch = !keyword;
-
   useEffect(() => {
-    if (isInitialSearch) return;
-
     setIsLoading(true);
 
     getGifsByKeyword({ keyword: keywordToUse, rating, language })
@@ -31,8 +27,12 @@ const useGifs = ({ keyword, rating, language } = {}) => {
         setIsLoading(false);
         setIsResultEmpty(false);
         localStorage.setItem("lastKeyword", keywordToUse);
+      })
+      .catch(error => {
+        console.error("ERROR", error);
+        setIsLoading(false);
       });
-  }, [isInitialSearch, keywordToUse, rating, language, setGifs]);
+  }, [keywordToUse, rating, language, setGifs]);
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return;

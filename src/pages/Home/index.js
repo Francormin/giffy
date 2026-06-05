@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import useGlobalGifs from "hooks/useGlobalGifs";
-import useGifs from "hooks/useGifs";
 import ListOfGifs from "components/ListOfGifs";
 import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
@@ -8,8 +7,6 @@ import Text from "components/Text";
 import PageContainer from "components/Layout/PageContainer";
 
 const Home = () => {
-  useGifs();
-
   const { gifs } = useGlobalGifs();
   const first15Gifs = gifs?.slice(0, 15);
 
