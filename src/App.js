@@ -12,7 +12,7 @@ import ScrollToTop from "components/ScrollToTop";
 import Spinner from "components/Spinner";
 import Navbar from "components/Navbar";
 
-import { AppContent, AppLogo } from "./App.styles";
+import { AppContent, AppLogo } from "App.styles";
 
 const HomePage = React.lazy(() => import("pages/Home"));
 const LoginPage = React.lazy(() => import("pages/Login"));

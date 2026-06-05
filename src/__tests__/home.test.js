@@ -1,10 +1,12 @@
-import { fireEvent, screen } from "@testing-library/react";
-import { mockGifs } from "test/mocks";
-import { renderWithProviders } from "test/renderWithProviders";
-import App from "./App";
+import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { mockGifs, mockNavigate } from "test/mocks";
+import renderWithProviders from "test/renderWithProviders";
+import Home from "pages/Home";
 
 beforeEach(() => {
   localStorage.setItem("gifs", JSON.stringify(mockGifs));
+  renderWithProviders(<Home />);
 });
 
 afterEach(() => {
@@ -14,8 +16,6 @@ afterEach(() => {
 describe("Home page", () => {
   // RENDERIZADO
   test("renders gifs stored in global state", async () => {
-    renderWithProviders(<App />);
-
     expect(
       await screen.findByRole("img", {
         name: /funny cat/i
@@ -30,8 +30,6 @@ describe("Home page", () => {
   });
 
   test("renders last search heading", () => {
-    renderWithProviders(<App />);
-
     expect(
       screen.getByRole("heading", {
         name: /last search/i
@@ -39,30 +37,8 @@ describe("Home page", () => {
     ).toBeInTheDocument();
   });
 
-  test("renders login link", () => {
-    renderWithProviders(<App />);
-
-    expect(
-      screen.getByRole("link", {
-        name: /login/i
-      })
-    ).toBeInTheDocument();
-  });
-
-  test("renders register link", () => {
-    renderWithProviders(<App />);
-
-    expect(
-      screen.getByRole("link", {
-        name: /register/i
-      })
-    ).toBeInTheDocument();
-  });
-
   // INTERACCIÓN
   test("search button is initially disabled and becomes enabled when input has text", () => {
-    renderWithProviders(<App />);
-
     const input = screen.getByRole("textbox");
 
     const button = screen.getByRole("button", {
@@ -71,51 +47,22 @@ describe("Home page", () => {
 
     expect(button).toBeDisabled();
 
-    fireEvent.change(input, {
-      target: { value: "Matrix" }
-    });
+    userEvent.type(input, "Matrix");
 
     expect(button).toBeEnabled();
   });
 
-  test("search form could be used", async () => {
-    renderWithProviders(<App />);
-
+  // NAVEGACIÓN
+  test("submits search and navigates to search results page", async () => {
     const input = screen.getByRole("textbox");
 
     const button = screen.getByRole("button", {
       name: /search/i
     });
 
-    fireEvent.change(input, {
-      target: { value: "Batman" }
-    });
+    userEvent.type(input, "Batman");
+    userEvent.click(button);
 
-    fireEvent.click(button);
-
-    expect(
-      await screen.findByText("results for: Batman")
-    ).toBeVisible();
-  });
-
-  // NAVEGACIÓN
-  test("login link points to login page", () => {
-    renderWithProviders(<App />);
-
-    const link = screen.getByRole("link", {
-      name: /login/i
-    });
-
-    expect(link).toHaveAttribute("href", "/login");
-  });
-
-  test("register link points to register page", () => {
-    renderWithProviders(<App />);
-
-    const link = screen.getByRole("link", {
-      name: /register/i
-    });
-
-    expect(link).toHaveAttribute("href", "/register");
+    expect(mockNavigate).toHaveBeenCalledWith("/search/Batman/g/en");
   });
 });

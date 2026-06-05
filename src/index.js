@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@emotion/react";
 
-import App from "./App";
-import GlobalStyles from "styles/GlobalStyles";
 import { theme } from "styles";
-import reportWebVitals from "./reportWebVitals";
+import GlobalStyles from "styles/GlobalStyles";
+import App from "App";
+import reportWebVitals from "reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

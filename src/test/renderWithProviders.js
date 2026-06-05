@@ -1,13 +1,40 @@
 import { render } from "@testing-library/react";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@emotion/react";
+
 import { theme } from "styles";
 
-export const renderWithProviders = ui =>
-  render(
+import UserContext from "context/UserContext";
+import GifsContext from "context/GifsContext";
+
+import { mockGifs } from "./mocks";
+
+const defaultUserContext = {
+  favs: [],
+  jwt: null,
+  setFavs: jest.fn(),
+  setJwt: jest.fn()
+};
+
+const defaultGifsContext = {
+  gifs: mockGifs,
+  setGifs: jest.fn()
+};
+
+export default function renderWithProviders(
+  ui,
+  { 
+    userContext = defaultUserContext,
+    gifsContext = defaultGifsContext
+  } = {}
+) {
+  return render(
     <HelmetProvider>
       <ThemeProvider theme={theme}>
-        {ui}
+        <UserContext.Provider value={userContext}>
+          <GifsContext.Provider value={gifsContext}>{ui}</GifsContext.Provider>
+        </UserContext.Provider>
       </ThemeProvider>
     </HelmetProvider>
   );
+}
