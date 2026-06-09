@@ -1,7 +1,7 @@
 import { Dot, Loader, LoaderContainer } from "./styles";
 
 const Spinner = () => (
-  <LoaderContainer>
+  <LoaderContainer role="status" aria-label="Loading">
     <Loader>
       <Dot />
       <Dot />

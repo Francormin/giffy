@@ -1,21 +1,22 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { mockGifs, mockNavigate } from "test/mocks";
+
+import { gifs } from "test/fixtures/gifs";
+import { mockUseGlobalGifs } from "test/mocks/useGlobalGifs";
+import { mockNavigate } from "test/mocks/wouter";
 import renderWithProviders from "test/renderWithProviders";
+
 import Home from "pages/Home";
 
 beforeEach(() => {
-  localStorage.setItem("gifs", JSON.stringify(mockGifs));
-  renderWithProviders(<Home />);
-});
+  mockUseGlobalGifs.mockReturnValue({ gifs });
 
-afterEach(() => {
-  localStorage.clear();
+  renderWithProviders(<Home />);
 });
 
 describe("Home page", () => {
   // RENDERIZADO
-  test("renders gifs stored in global state", async () => {
+  test("renders gifs returned by useGlobalGifs", async () => {
     expect(
       await screen.findByRole("img", {
         name: /funny cat/i
@@ -53,7 +54,7 @@ describe("Home page", () => {
   });
 
   // NAVEGACIÓN
-  test("submits search and navigates to search results page", async () => {
+  test("submits search and navigates to search results page", () => {
     const input = screen.getByRole("textbox");
 
     const button = screen.getByRole("button", {

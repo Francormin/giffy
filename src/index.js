@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import { theme } from "styles";
 import GlobalStyles from "styles/GlobalStyles";
+
 import App from "App";
 import reportWebVitals from "reportWebVitals";
 

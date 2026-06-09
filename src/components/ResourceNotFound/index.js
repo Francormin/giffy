@@ -10,7 +10,10 @@ const ERROR_GIFS = [
 ];
 
 const ResourceNotFound = () => {
-  const randomGifId = useMemo(() => ERROR_GIFS[Math.floor(Math.random() * ERROR_GIFS.length)], []);
+  const randomGifId = useMemo(
+    () => ERROR_GIFS[Math.floor(Math.random() * ERROR_GIFS.length)],
+    []
+  );
 
   const gifUrl = `https://media.giphy.com/media/${randomGifId}/giphy.gif`;
 

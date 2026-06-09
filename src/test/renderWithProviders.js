@@ -7,8 +7,6 @@ import { theme } from "styles";
 import UserContext from "context/UserContext";
 import GifsContext from "context/GifsContext";
 
-import { mockGifs } from "./mocks";
-
 const defaultUserContext = {
   favs: [],
   jwt: null,
@@ -17,7 +15,7 @@ const defaultUserContext = {
 };
 
 const defaultGifsContext = {
-  gifs: mockGifs,
+  gifs: [],
   setGifs: jest.fn()
 };
 
@@ -32,7 +30,9 @@ export default function renderWithProviders(
     <HelmetProvider>
       <ThemeProvider theme={theme}>
         <UserContext.Provider value={userContext}>
-          <GifsContext.Provider value={gifsContext}>{ui}</GifsContext.Provider>
+          <GifsContext.Provider value={gifsContext}>
+            {ui}
+          </GifsContext.Provider>
         </UserContext.Provider>
       </ThemeProvider>
     </HelmetProvider>
