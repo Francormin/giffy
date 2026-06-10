@@ -8,29 +8,39 @@ import renderWithProviders from "test/renderWithProviders";
 
 import Home from "pages/Home";
 
-beforeEach(() => {
-  mockUseGlobalGifs.mockReturnValue({ gifs });
+const renderHome = ({
+  gifsData = gifs,
+  isInitialized = true
+} = {}) => {
+  mockUseGlobalGifs.mockReturnValue({
+    gifs: gifsData,
+    isInitialized
+  });
 
-  renderWithProviders(<Home />);
-});
+  return renderWithProviders(<Home />);
+};
 
 describe("Home page", () => {
   // RENDERIZADO
-  test("renders gifs returned by useGlobalGifs", async () => {
+  test("renders gifs returned by useGlobalGifs", () => {
+    renderHome();
+
     expect(
-      await screen.findByRole("img", {
+      screen.getByRole("img", {
         name: /funny cat/i
       })
     ).toBeInTheDocument();
 
     expect(
-      await screen.findByRole("img", {
+      screen.getByRole("img", {
         name: /dancing dog/i
       })
     ).toBeInTheDocument();
   });
 
   test("renders last search heading", () => {
+    renderHome();
+
     expect(
       screen.getByRole("heading", {
         name: /last search/i
@@ -38,8 +48,23 @@ describe("Home page", () => {
     ).toBeInTheDocument();
   });
 
+  test("renders spinner while gifs are initializing", () => {
+    renderHome({
+      gifsData: [],
+      isInitialized: false
+    });
+
+    expect(
+      screen.getByRole("status", {
+        name: /loading/i
+      })
+    ).toBeInTheDocument();
+  });
+
   // INTERACCIÓN
   test("search button is initially disabled and becomes enabled when input has text", () => {
+    renderHome();
+
     const input = screen.getByRole("textbox");
 
     const button = screen.getByRole("button", {
@@ -55,6 +80,8 @@ describe("Home page", () => {
 
   // NAVEGACIÓN
   test("submits search and navigates to search results page", () => {
+    renderHome();
+
     const input = screen.getByRole("textbox");
 
     const button = screen.getByRole("button", {

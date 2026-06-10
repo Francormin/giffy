@@ -4,18 +4,24 @@ import GifsContext from "context/GifsContext";
 import getGifsByKeyword from "services/getGifsByKeyword";
 
 const useGifs = ({ keyword, rating, language } = {}) => {
+  if (!keyword?.trim()) {
+    throw new Error("useGifs requires a non-empty keyword");
+  }
+
   const [isLoading, setIsLoading] = useState(false);
   const [isResultEmpty, setIsResultEmpty] = useState(false);
   const [page, setPage] = useState(INITIAL_PAGE);
 
   const { gifs, setGifs } = useContext(GifsContext);
 
-  const keywordToUse = keyword || localStorage.getItem("lastKeyword") || "random";
-
   useEffect(() => {
     setIsLoading(true);
 
-    getGifsByKeyword({ keyword: keywordToUse, rating, language })
+    getGifsByKeyword({
+      keyword,
+      rating,
+      language
+    })
       .then(gifs => {
         if (gifs.length === 0) {
           setIsLoading(false);
@@ -26,20 +32,24 @@ const useGifs = ({ keyword, rating, language } = {}) => {
         setGifs(gifs);
         setIsLoading(false);
         setIsResultEmpty(false);
-        localStorage.setItem("lastKeyword", keywordToUse);
       })
       .catch(error => {
-        console.error("ERROR", error);
+        console.error("ERROR FETCHING GIFS", error);
         setIsLoading(false);
       });
-  }, [keywordToUse, rating, language, setGifs]);
+  }, [keyword, rating, language, setGifs]);
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
 
     setIsLoading(true);
 
-    getGifsByKeyword({ keyword: keywordToUse, rating, language, page })
+    getGifsByKeyword({
+      keyword,
+      rating,
+      language,
+      page
+    })
       .then(nextGifs => {
         if (nextGifs.length === 0) {
           setIsLoading(false);
@@ -48,8 +58,12 @@ const useGifs = ({ keyword, rating, language } = {}) => {
 
         setGifs(actualGifs => [...actualGifs, ...nextGifs]);
         setIsLoading(false);
+      })
+      .catch(error => {
+        console.error("ERROR FETCHING PAGINATED GIFS", error);
+        setIsLoading(false);
       });
-  }, [keywordToUse, rating, language, page, setGifs]);
+  }, [keyword, rating, language, page, setGifs]);
 
   return {
     gifs,

@@ -9,12 +9,10 @@ const LazyTrendingSearches = () => {
 
   return (
     <div ref={elementRef}>
-      {show ? (
+      {show && (
         <Suspense fallback={<Spinner />}>
           <TrendingSearches />
         </Suspense>
-      ) : (
-        <Spinner />
       )}
     </div>
   );

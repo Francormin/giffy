@@ -5,9 +5,10 @@ import TrendingSearches from "components/TrendingSearches";
 import SearchForm from "components/SearchForm";
 import Text from "components/Text";
 import PageContainer from "components/Layout/PageContainer";
+import Spinner from "components/Spinner";
 
 const Home = () => {
-  const { gifs } = useGlobalGifs();
+  const { gifs, isInitialized } = useGlobalGifs();
   const first15Gifs = gifs?.slice(0, 15);
 
   return (
@@ -23,11 +24,17 @@ const Home = () => {
       <PageContainer>
         <SearchForm />
 
-        <Text as="h2" variant="heading">
-          Last search
-        </Text>
-
-        <ListOfGifs gifs={first15Gifs} />
+        {!isInitialized ? (
+          <Spinner />
+        ) : (
+          <>
+            <Text as="h2" variant="heading">
+              Last search
+            </Text>
+    
+            <ListOfGifs gifs={first15Gifs} />
+          </>
+        )}
 
         <TrendingSearches />
       </PageContainer>

@@ -16,7 +16,8 @@ const defaultUserContext = {
 
 const defaultGifsContext = {
   gifs: [],
-  setGifs: jest.fn()
+  setGifs: jest.fn(),
+  isInitialized: true
 };
 
 export default function renderWithProviders(
